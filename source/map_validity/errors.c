@@ -9,13 +9,13 @@ void	error(char *error_msg)
 	exit(1);
 }
 
-void	error_map(char *error_msg, char **map)
-{
-	write(2, "Error\n", 6);
-	ft_printf("%s%s\n",RED, error_msg);
-	free_map(map);
-	exit(1);
-}
+// void	error(char *error_msg, char **map)
+// {
+// 	write(2, "Error\n", 6);
+// 	ft_printf("%s%s\n",RED, error_msg);
+// 	// free_map(map);
+// 	exit(1);
+// }
 
 int	not_valid_component(char c)
 {
@@ -24,11 +24,11 @@ int	not_valid_component(char c)
 
 int	check_result(int flag, t_map *map, char **lines)
 {	if (flag == 1 && (map->p_count != 1 || map->e_count != 1 || map->c_count < 1))
-		error_map("Invalid map: Unkown compenent and Duplicate/missing elements found!", lines);
+		error("Invalid map: Unkown compenent and Duplicate/missing elements found!");
 	else if (flag == 1)
-		error_map("Invalid Map: Unkown compenent",lines);
+		error("Invalid Map: Unkown compenent");
 	else if (map->p_count != 1 || map->e_count != 1 || map->c_count < 1)
-		error_map("Invalid map: Duplicate or missing elements found!", lines);
+		error("Invalid map: Duplicate or missing elements found!");
 	
 }
 

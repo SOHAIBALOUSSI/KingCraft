@@ -41,6 +41,8 @@ char	*read_map(char *map_path, int fd)
 		full_line = ft_strjoin(full_line, current_line);
 		free(current_line);
 	}
+	if (!full_line)
+		return (NULL);
 	return (full_line);
 }
 
@@ -50,13 +52,13 @@ int	is_rectangle(char **lines)
 	int	firstlength;
 
 	if (!*lines)
-		error_map("Invalid Map!", lines);
+		error("Invalid Map!");
 	y = 0;
 	firstlength = ft_strlen(lines[0]);
 	while (lines[y])
 	{
 		if (ft_strlen(lines[y]) != firstlength)
-			error_map("Invalid Map: Map is not rectangular!", lines);
+			error("Invalid Map: Map is not rectangular!");
 		y++;
 	}
 	return (0);
@@ -105,14 +107,14 @@ int	wall_check(char **map_lines)
 	{
 		len = ft_strlen(map_lines[y]);
 		if (len < 3 || map_lines[y][0] != '1' || map_lines[y][len - 1] != '1')
-			error_map("Invalid map : The map is missing walls around its edges", map_lines);
+			error("Invalid map : The map is missing walls around its edges");
 		if (y == 0 || map_lines[y + 1] == NULL)
 		{
 			x = 0;
 			while (map_lines[y][x])
 			{
 				if (map_lines[y][x] != '1')
-					error_map("Invalid map : The map is missing top or down walls", map_lines);
+					error("Invalid map : The map is missing top or down walls");
 				x++;
 			}
 		}

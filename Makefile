@@ -10,6 +10,7 @@ MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
 INCLUDES = -I/usr/include -Imlx
 LIB_MLX = ./mlx/libmlx.a
 
+SO = .source/map_validity/
 LIBFT_SRC = $(addprefix $(LIBFT_PATH), ft_atoi.c ft_lstadd_back_bonus.c ft_memchr.c ft_putendl_fd.c ft_striteri.c ft_strtrim.c \
 ft_bzero.c ft_lstadd_front_bonus.c ft_memcmp.c ft_puthex.c ft_strjoin.c ft_substr.c \
 ft_calloc.c ft_lstclear_bonus.c ft_memcpy.c ft_putnbr.c ft_strlcat.c ft_tolower.c \
@@ -18,9 +19,9 @@ ft_isalpha.c ft_lstiter_bonus.c ft_memset.c ft_putstr.c ft_strlen.c get_next_lin
 ft_isascii.c ft_lstlast_bonus.c ft_printf.c ft_putstr_fd.c ft_strmapi.c ft_isdigit.c \
 ft_lstmap_bonus.c ft_putadress.c ft_split.c ft_strncmp.c ft_isprint.c ft_lstnew_bonus.c \
 ft_putchar.c ft_strchr.c ft_strnstr.c ft_itoa.c ft_lstsize_bonus.c ft_putchar_fd.c \
-ft_strdup.c ft_strrchr.c ft_base16.c)
+ft_strdup.c ft_strrchr.c ft_base16.c get_next_line_utils.c)
 
-SRCS = main.c $(LIBFT_SRC)
+SRCS = main.c $(LIBFT_SRC) ./source/map_validity/check_fonctions.c ./source/map_validity/errors.c ./source/map_validity/validate_map.c
 
 ## SO_LONG SRC HERE ..
 

@@ -13,44 +13,19 @@
 // }
 
 
-#include "mlx/mlx.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <X11/X.h>
-#include <X11/keysym.h>
- 
+#include "source/so_long.h"
 
-# include <fcntl.h>
-
-
-
-void    get_file(char *file_path)
+int main(int ac, char **av)
 {
-	int		fd;
-	char	*curr_line;
-	char	*full_lines;
-	char	**lines_arr;
-	int i = 0;
-
-	full_lines = NULL;
-	fd = open(file_path, O_RDONLY);
-	curr_line = get_next_line(fd);
-	while (curr_line)
+	if (ac == 2)
 	{
-		full_lines = ft_strjoin(full_lines, curr_line);
-		free(curr_line);
-		curr_line = get_next_line(fd);
+		t_map map;
+		map.c_count = 0;
+		map.e_count = 0;
+		map.p_count = 0;
+		validate_map(av[1], &map);
 	}
-	// lines_arr = ft_split(full_lines, '\n');
-    // while (lines_arr[i])
-	// 	printf("%s\n", lines_arr[i++]);
-	// printf("%s\n", full_lines);
-	
-}
 
-int main()
-{
-    get_file("main.c");	
 }
 
 

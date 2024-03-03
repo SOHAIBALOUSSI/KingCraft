@@ -19,46 +19,38 @@
 #include <X11/X.h>
 #include <X11/keysym.h>
  
-typedef struct s_data
+
+# include <fcntl.h>
+
+
+
+void    get_file(char *file_path)
 {
-	void *mlx_ptr;
-	void *win_ptr;
-} t_data;
- 
-int on_destroy(t_data *data)
-{
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
-	exit(0);
-	return (0);
+	int		fd;
+	char	*curr_line;
+	char	*full_lines;
+	char	**lines_arr;
+	int i = 0;
+
+	full_lines = NULL;
+	fd = open(file_path, O_RDONLY);
+	curr_line = get_next_line(fd);
+	while (curr_line)
+	{
+		full_lines = ft_strjoin(full_lines, curr_line);
+		free(curr_line);
+		curr_line = get_next_line(fd);
+	}
+	// lines_arr = ft_split(full_lines, '\n');
+    // while (lines_arr[i])
+	// 	printf("%s\n", lines_arr[i++]);
+	// printf("%s\n", full_lines);
+	
 }
- 
-int on_keypress(int keysym, t_data *data)
+
+int main()
 {
-	(void)data;
-	printf("Pressed key: %d\\n", keysym);
-	return (0);
+    get_file("main.c");	
 }
- 
-int main(void)
-{
-	t_data data;
- 
-	data.mlx_ptr = mlx_init();
-	if (!data.mlx_ptr)
-		return (1);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, 600, 400, "hi :)");
-	if (!data.win_ptr)
-		return (free(data.mlx_ptr), 1);
- 
-	// Register key release hook
-	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
- 
-	// Register destroy hook
-	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
- 
-	// Loop over the MLX pointer
-	mlx_loop(data.mlx_ptr);
-	return (0);
-}
+
+

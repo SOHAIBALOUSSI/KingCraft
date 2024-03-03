@@ -1,11 +1,11 @@
-#include "../mlx/mlx.h"
 
-int	main(void)
+#include "so_long.h"
+
+int main(int ac, char **av)
 {
-	void	*mlx;
-	void	*mlx_win;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
+	if (ac == 2)
+	{
+		
+	}
+	return (0);
 }

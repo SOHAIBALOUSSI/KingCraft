@@ -28,39 +28,46 @@ int	extension_check(char *map_path)
 	return (0);
 }
 
-char	*read_map(char *map_path, int fd)
+char	*read_map(char *map_path, int fd, t_map *map)
 {
 	char	*current_line = NULL;
 	char	*full_line = NULL;
 
-	while (1)
+	current_line = get_next_line(fd);
+	if (ft_strlen(current_line) - 1 > map->display_width)
+		error("Relax Bro , Create a simple map!");
+	map->width = ft_strlen(current_line) - 1;
+	while (current_line)
 	{
-		current_line = get_next_line(fd);
-		if (!current_line)
-			break ;
+		if (ft_strlen(current_line) == 0 || !ft_strncmp(current_line, "\n", 1))
+			error("Invalid map: Empty line detected");
+		map->height++;
+		if (map->height > map->display_height) {
+			ft_printf("%d - %d\n", map->height, map->display_height);
+			error("Relax Bro !!, Create a simple map");
+		}
 		full_line = ft_strjoin(full_line, current_line);
 		free(current_line);
+		current_line = get_next_line(fd);
 	}
-	if (!full_line)
-		return (NULL);
 	return (full_line);
 }
 
-int	is_rectangle(char **lines)
+int	is_rectangle(char **lines, t_map *map)
 {
-	int	y;
-	int	firstlength;
 
-	if (!*lines)
-		error("Invalid Map!");
+	int	y;
+	size_t	firstlength;
+
 	y = 0;
 	firstlength = ft_strlen(lines[0]);
 	while (lines[y])
 	{
 		if (ft_strlen(lines[y]) != firstlength)
-			error("Invalid Map: Map is not rectangular!");
+			error_map("Invalid Map: Map is not rectangular!", lines);
 		y++;
 	}
+	map->width = firstlength;
 	return (0);
 }
 
@@ -80,7 +87,7 @@ int	component_check(char **map_lines, t_map *map)
 		while (map_lines[y][x])
 		{
 			if (map_lines[y][x] == 'P')
-				map->p_count++;
+				save_cords_and_count(map , x, y);
 			else if (map_lines[y][x] == 'E')
 				map->e_count++;
 			else if (map_lines[y][x] == 'C')
@@ -122,28 +129,3 @@ int	wall_check(char **map_lines)
 	}
 	return (0);
 }
-// int main()
-// {
-// 	t_map test;
-// 	test.c_count = 0;
-// 	test.e_count = 0;
-// 	test.p_count = 0;
-
-// 	char **map;
-// 	map = ft_split("11111\n11C111\n1P111\n11111\n11E11", '\n');
-// 	int res = ex(map, &test);
-// 	if (!res)
-// 		ft_printf("valid");
-
-// 	extension_check("")
-
-// 	// int i = 0;
-// 	// while (map[i])
-// 	// 	ft_printf("%s \n", map[i++]);
-	
-// }
-
-// int main()
-// {
-//     extension_check("map.bea");
-// }

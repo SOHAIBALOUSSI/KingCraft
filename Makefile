@@ -3,8 +3,8 @@ NAME = so_long
 #CFLAGS = -Wall -Wextra -Werror
 
 # LIBS PATH
-LIBFT_PATH = ./Libs/libft/
-MLX_PATH = ./Libs/mlx_linux/
+LIBFT_PATH = ./libs/libft/
+MLX_PATH = ./libs/mlx_linux/
 
 MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
 INCLUDES = -I/usr/include -Imlx
@@ -21,7 +21,8 @@ ft_lstmap_bonus.c ft_putadress.c ft_split.c ft_strncmp.c ft_isprint.c ft_lstnew_
 ft_putchar.c ft_strchr.c ft_strnstr.c ft_itoa.c ft_lstsize_bonus.c ft_putchar_fd.c \
 ft_strdup.c ft_strrchr.c ft_base16.c get_next_line_utils.c)
 
-SRCS = main.c $(LIBFT_SRC) ./source/map_validity/check_fonctions.c ./source/map_validity/errors.c ./source/map_validity/validate_map.c
+SRCS = main.c $(LIBFT_SRC) $(addprefix ./source/map_validity/, check_fonctions.c errors.c validate_map.c check_valid_path.c)\
+		$(addprefix ./source/initialisation/, init_mlx.c init_structs.c)
 
 ## SO_LONG SRC HERE ..
 
@@ -29,16 +30,14 @@ OBJS = $(SRCS:.c=.o)
 
 $(MLX):
 	@make -C $(MLX_PATH)
-
-$(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
-
-
 all :$(MLX) $(NAME) 
+	@make clean
 
 .c.o :
 	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
 
+$(NAME) : $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
 clean:
 	@rm -f $(OBJS)
 

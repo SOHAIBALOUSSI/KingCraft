@@ -30,22 +30,21 @@ int	extension_check(char *map_path)
 
 char	*read_map(char *map_path, int fd, t_map *map)
 {
-	char	*current_line = NULL;
-	char	*full_line = NULL;
+	char	*current_line;
+	char	*full_line;
 
+	full_line = NULL;
 	current_line = get_next_line(fd);
-	if (ft_strlen(current_line) - 1 > map->display_width)
-		error("Relax Bro , Create a simple map!");
 	map->width = ft_strlen(current_line) - 1;
+	if (map->width > map->display_width)
+		error("Relax Bro !! Create a simple map");
 	while (current_line)
 	{
 		if (ft_strlen(current_line) == 0 || !ft_strncmp(current_line, "\n", 1))
 			error("Invalid map: Empty line detected");
 		map->height++;
-		if (map->height > map->display_height) {
-			ft_printf("%d - %d\n", map->height, map->display_height);
-			error("Relax Bro !!, Create a simple map");
-		}
+		if (map->height > map->display_height)
+			error("Relax Bro !! Too big map");
 		full_line = ft_strjoin(full_line, current_line);
 		free(current_line);
 		current_line = get_next_line(fd);
@@ -55,7 +54,6 @@ char	*read_map(char *map_path, int fd, t_map *map)
 
 int	is_rectangle(char **lines, t_map *map)
 {
-
 	int	y;
 	size_t	firstlength;
 
@@ -67,7 +65,6 @@ int	is_rectangle(char **lines, t_map *map)
 			error_map("Invalid Map: Map is not rectangular!", lines);
 		y++;
 	}
-	map->width = firstlength;
 	return (0);
 }
 

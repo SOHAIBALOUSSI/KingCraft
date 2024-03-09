@@ -27,17 +27,16 @@ SRCS = main.c $(LIBFT_SRC) $(addprefix ./source/map_validity/, check_fonctions.c
 ## SO_LONG SRC HERE ..
 
 OBJS = $(SRCS:.c=.o)
+all :$(MLX) $(NAME) 
 
 $(MLX):
 	@make -C $(MLX_PATH)
-all :$(MLX) $(NAME) 
-	@make clean
 
-.c.o :
-	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
+	$(CC) $(CFLAGS) $^ -o $@ $(MLX_FLAGS)
 clean:
 	@rm -f $(OBJS)
 

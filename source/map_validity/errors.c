@@ -31,7 +31,6 @@ int	not_valid_component(char c)
 
 void	check_result(int flag, t_map *map, char **lines)
 {
-
 	if (flag == 1 && (map->p_count != 1 || map->e_count != 1 || map->c_count < 1))
 		error_map("Invalid map: Unkown compenent and Duplicate/missing elements found!", lines);
 	else if (flag == 1)

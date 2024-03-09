@@ -18,23 +18,20 @@ void	can_reach_exit(char **map, int x, int y, t_map *map_data)
     can_reach_exit(map, x, y + 1, map_data);
     can_reach_exit(map, x, y - 1, map_data); 
 
-} 
+}
 
 int	build_map(t_map *game)
 {
 	int		i;
-	char	**tmp_map;
-	int		*counter;
 
 	i = -1;
-	tmp_map = (char **)malloc(sizeof(char *) * (game->height + 1));
-	if (tmp_map == NULL)
+	game->map__ = (char **)malloc(sizeof(char *) * (game->height + 1));
+	if (!game->map__)
 		return (0);
-	counter = 0;
 	while (game->map_lines[++i])
-		tmp_map[i] = ft_strdup(game->map_lines[i]);
-	tmp_map[i] = NULL;
-	can_reach_exit(tmp_map, game->player_x, game->player_y, game);
+		game->map__[i] = ft_strdup(game->map_lines[i]);
+	game->map__[i] = NULL;
+	can_reach_exit(game->map__, game->player_x, game->player_y, game);
 	if ((game->total == game->c_count && game->e_flag == 1))
 		return 0;
 	else

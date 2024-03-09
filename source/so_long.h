@@ -11,33 +11,41 @@
 #include <stdio.h>
 # define RED "\033[0;31m"
 
-typedef struct player
+typedef struct	xpm
 {
+	int			width;
+	int			height;
 	int			x;
 	int			y;
-	int			colectibles_earned;
-	int			is_won;
-	int			is_lost;
-	int			moves;
-}				t_player;
+	char		*path;
+	void		*xpm_data;
+}				t_xpm;
 
-typedef struct map
+typedef struct	map
 {
 	int			e_count;
 	int			p_count;
 	int			c_count;
+	int			e_flag;
 	int			width;
 	int			height;
-	char		**map_lines;
-	char        **map2;
-	int			total;
-	int         player_x;
-	int         player_y;
-	int			e_flag;
-	void		*ptr;
-	void		*win;
 	int			display_width;
 	int			display_height;
+	char		**map_lines;
+	char		**map__;
+	int			total;
+	int			player_x;
+	int			player_y;
+	void		*ptr;
+	void		*win;
+	t_xpm	*bg;
+	t_xpm	*king;
+	t_xpm	*wall;
+	t_xpm	*collectible;
+	t_xpm	*princess_exit[2];
+
+
+
 }				t_map;
 
 

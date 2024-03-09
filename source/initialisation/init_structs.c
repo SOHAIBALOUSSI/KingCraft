@@ -1,9 +1,10 @@
 
 #include "../so_long.h"
 
-void    init_structs(t_map *map)
+void	init_structs(t_map *map)
 {
-    	map->c_count = 0;
+		// *map = (t_map){0};
+		map->c_count = 0;
 		map->e_count = 0;
 		map->p_count = 0;
 		map->height = 0;

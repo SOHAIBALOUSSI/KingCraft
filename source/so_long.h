@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sait-alo <sait-alo@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/07 21:19:15 by sait-alo          #+#    #+#             */
+/*   Updated: 2024/03/07 21:19:27 by sait-alo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
@@ -31,6 +42,7 @@ typedef struct	map
 	int			height;
 	int			display_width;
 	int			display_height;
+	int			collected;
 	char		**map_lines;
 	char		**map__;
 	int			total;
@@ -39,10 +51,10 @@ typedef struct	map
 	void		*ptr;
 	void		*win;
 	t_xpm	*bg;
-	t_xpm	*king;
+	t_xpm	*king[2];
 	t_xpm	*wall;
 	t_xpm	*collectible;
-	t_xpm	*princess_exit[2];
+	t_xpm	*princess_exit[4];
 
 
 
@@ -67,7 +79,8 @@ int     build_map(t_map *game);
 /*					initialization						*/
 int 	init_mlx(t_map *mlx);
 void    init_structs(t_map *map);
-
+void	init_xpm(t_map *game);
+void	init_map(t_map  *game);
 
 
 #endif

@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sait-alo <sait-alo@student.1337.ma>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/03/07 21:22:51 by sait-alo          #+#    #+#              #
+#    Updated: 2024/03/07 21:22:54 by sait-alo         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 
 NAME = so_long
 #CFLAGS = -Wall -Wextra -Werror
@@ -21,10 +33,11 @@ ft_lstmap_bonus.c ft_putadress.c ft_split.c ft_strncmp.c ft_isprint.c ft_lstnew_
 ft_putchar.c ft_strchr.c ft_strnstr.c ft_itoa.c ft_lstsize_bonus.c ft_putchar_fd.c \
 ft_strdup.c ft_strrchr.c ft_base16.c get_next_line_utils.c)
 
-SRCS = main.c $(LIBFT_SRC) $(addprefix ./source/map_validity/, check_fonctions.c errors.c validate_map.c check_valid_path.c)\
-		$(addprefix ./source/initialisation/, init_mlx.c init_structs.c)
-
 ## SO_LONG SRC HERE ..
+
+SRCS = main.c $(LIBFT_SRC) $(addprefix ./source/map_validity/, check_fonctions.c errors.c validate_map.c check_valid_path.c)\
+		$(addprefix ./source/initialisation/, init_mlx.c init_structs.c init_xpm.c init_map.c)
+
 
 OBJS = $(SRCS:.c=.o)
 all :$(MLX) $(NAME) 

@@ -1,5 +1,16 @@
-#include "../so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sait-alo <sait-alo@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/07 21:18:59 by sait-alo          #+#    #+#             */
+/*   Updated: 2024/03/07 21:19:05 by sait-alo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../so_long.h"
 
 int    validate_map(char *map_path, t_map *map)
 {
@@ -20,6 +31,6 @@ int    validate_map(char *map_path, t_map *map)
     component_check(all_lines, map);
     wall_check(all_lines);
     build_map(map);
-    free(all_lines);
+    free(lines);
     return (0);
 }

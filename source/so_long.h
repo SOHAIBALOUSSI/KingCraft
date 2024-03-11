@@ -53,6 +53,7 @@ typedef struct	map
 	int			display_width;
 	int			display_height;
 	int			collected;
+	int			view_;
 	char		**map_lines;
 	char		**map__;
 	int			total;

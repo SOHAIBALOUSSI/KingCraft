@@ -68,6 +68,7 @@ static	void move_player_down(t_map *game, int x, int y)
 
 static	void move_player_right(t_map *game, int x, int y)
 {
+	game->view_ = 0;
 	if (game->map_lines[y][x + 1] != '1')
 	{
 		if (game->map_lines[y][x + 1] == 'C')
@@ -96,6 +97,7 @@ static	void move_player_right(t_map *game, int x, int y)
 
 static	void	move_player_left(t_map *game, int x , int y)
 {
+	game->view_ = 1;
 	if (game->map_lines[y][x - 1] != '1')
 	{
 		if (game->map_lines[y][x - 1] == 'C')

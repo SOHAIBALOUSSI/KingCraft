@@ -53,7 +53,12 @@ void	check_element_and_push(t_map *game, int x, int y, char element)
 	else if (element == 'E')
 		push_image_exit(game, x, y);
 	else if (element == 'P')
-		push_image(game, game->king[0], x, y);
+	{	
+		if (game->view_ == 1)
+			push_image(game, game->king[1], x, y);
+		else
+			push_image(game, game->king[0], x, y);
+	}
 }
 void	init_map(t_map  *game)
 {

@@ -27,17 +27,17 @@ static	int push_image(t_map *game, t_xpm *image, int x, int y)
 
 static	void	push_image_exit(t_map *game ,int x, int y)
 {
-	if ((game->map_lines[y][x + 1] == '1') && game->player_x < x)
+	if ((game->map_lines[y][x + 1] == '1') || game->player_x <= x)
 	{
 		if (game->c_count == game->collected)
-			push_image(game, game->princess_exit[0], x, y);
+			push_image(game, game->princess_exit[0], x, y); // left
 		else
 			push_image(game, game->princess_exit[1], x, y);
 	}
 	else
 	{
 		if (game->c_count == game->collected)
-			push_image(game, game->princess_exit[2], x, y);
+			push_image(game, game->princess_exit[2], x, y); // right
 		else
 			push_image(game, game->princess_exit[3], x, y);
 	}

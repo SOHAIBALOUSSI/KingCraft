@@ -22,6 +22,16 @@
 #include <stdio.h>
 # define RED "\033[0;31m"
 
+# define W 119
+# define S 115
+# define A 97
+# define D 100
+
+# define UP 'u'
+# define DOWN 'd'
+# define LEFT 'l'
+# define RIGHT 'r'
+
 typedef struct	xpm
 {
 	int			width;
@@ -48,6 +58,7 @@ typedef struct	map
 	int			total;
 	int			player_x;
 	int			player_y;
+	int			player_moves;
 	void		*ptr;
 	void		*win;
 	t_xpm	*bg;
@@ -81,6 +92,8 @@ int 	init_mlx(t_map *mlx);
 void    init_structs(t_map *map);
 void	init_xpm(t_map *game);
 void	init_map(t_map  *game);
+
+void	capture_hook(t_map *game);
 
 
 #endif

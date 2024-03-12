@@ -36,8 +36,8 @@ ft_strdup.c ft_strrchr.c ft_base16.c get_next_line_utils.c)
 ## SO_LONG SRC HERE ..
 
 SRCS = main.c $(LIBFT_SRC) $(addprefix ./source/map_validity/, check_fonctions.c errors.c validate_map.c check_valid_path.c)\
-		$(addprefix ./source/initialisation/, init_mlx.c init_structs.c init_xpm.c init_map.c) \
-		$(addprefix ./source/game_hooks/, capture_hook.c)
+		$(addprefix ./source/initialisation/, init_mlx.c init_xpm.c init_map.c) \
+		$(addprefix ./source/game_hooks/, capture_hook.c move_player.c)
 
 
 OBJS = $(SRCS:.c=.o)

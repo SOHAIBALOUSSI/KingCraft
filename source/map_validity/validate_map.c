@@ -30,7 +30,7 @@ int    validate_map(char *map_path, t_map *map)
     is_rectangle(all_lines, map);
     component_check(all_lines, map);
     wall_check(all_lines);
-    build_map(map);
+    check_valid_path(map);
     free(lines);
     return (0);
 }

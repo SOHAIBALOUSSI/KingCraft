@@ -63,18 +63,17 @@ typedef struct	map
 	void		*ptr;
 	void		*win;
 	t_xpm	*bg;
-	t_xpm	*king[2];
+	t_xpm	*king[4];
 	t_xpm	*wall;
 	t_xpm	*collectible;
-	t_xpm	*princess_exit[4];
-
-
+	t_xpm	*princess_exit[6];
 
 }				t_map;
 
 
 /*						MAP CHECK						*/
 int     validate_map(char *map_path, t_map *map);
+void	error_read(char *error_msg, char *lines);
 void	error_map(char *error_msg, char **map);
 void	error(char *error_msg);
 char	*read_map(char *map_path, int fd, t_map *map);
@@ -87,14 +86,14 @@ int		wall_check(char **map_lines);
 void	save_cords_and_count(t_map *map , int x, int y);
 void	free_map(char **map);
 void 	can_reach_exit(char **map, int start_x, int start_y, t_map *map_data);
-int     build_map(t_map *game);
-/*					initialization						*/
+int		check_valid_path(t_map *game);
+/*					Initialization						*/
 int 	init_mlx(t_map *mlx);
-void    init_structs(t_map *map);
 void	init_xpm(t_map *game);
 void	init_map(t_map  *game);
 
 void	capture_hook(t_map *game);
+void	move_player(t_map *game, char direction);
 
 
 #endif

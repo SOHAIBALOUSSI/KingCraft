@@ -21,6 +21,15 @@ void	error(char *error_msg)
 	exit(1);
 }
 
+void	error_read(char *error_msg, char *lines)
+{
+	write(2, "Error\n", 6);
+	ft_printf("%s%s\n",RED, error_msg);
+	free(lines);
+	lines = NULL;
+	exit(1);
+}
+
 void	error_map(char *error_msg, char **map)
 {
 	write(2, "Error\n", 6);

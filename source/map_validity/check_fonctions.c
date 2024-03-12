@@ -32,20 +32,26 @@ char	*read_map(char *map_path, int fd, t_map *map)
 {
 	char	*current_line;
 	char	*full_line;
+	char	*tmp;
 
 	full_line = NULL;
 	current_line = get_next_line(fd);
 	map->width = ft_strlen(current_line) - 1;
 	if (map->width > map->display_width)
-		error("Relax Bro !! Create a simple map");
+		error_read("Relax Bro !! Too big map", full_line);
 	while (current_line)
 	{
 		if (ft_strlen(current_line) == 0 || !ft_strncmp(current_line, "\n", 1))
-			error("Invalid map: Empty line detected");
+			error_read("Invalid map: Empty line detected", full_line);
 		map->height++;
 		if (map->height > map->display_height)
-			error("Relax Bro !! Too big map");
-		full_line = ft_strjoin(full_line, current_line);
+		{
+			free(current_line);
+			error_read("Relax Bro !! Too big map", full_line);
+		}
+		tmp = full_line;
+		full_line = ft_strjoin(tmp, current_line);
+		free(tmp);
 		free(current_line);
 		current_line = get_next_line(fd);
 	}

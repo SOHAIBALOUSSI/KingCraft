@@ -32,7 +32,7 @@ void	can_reach_exit(char **map, int x, int y, t_map *map_data)
 
 }
 
-int	build_map(t_map *game)
+int	check_valid_path(t_map *game)
 {
 	int		i;
 

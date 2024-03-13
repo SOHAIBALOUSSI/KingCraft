@@ -80,6 +80,7 @@ int		ft_puthex(unsigned int nb, int type);
 int		ft_putstr(char *str);
 int		ft_putadress(void *arg);
 int		ft_base16(unsigned long nb, char *base);
+size_t	ft_strlen_read(const char *s);
 /* get_next_line function*/
 char	*get_next_line(int fd);
 

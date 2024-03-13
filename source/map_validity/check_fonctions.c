@@ -28,7 +28,7 @@ int	extension_check(char *map_path)
 	return (0);
 }
 
-char	*read_map(char *map_path, int fd, t_map *map)
+char	*read_map(int fd, t_map *map)
 {
 	char	*current_line;
 	char	*full_line;
@@ -36,14 +36,16 @@ char	*read_map(char *map_path, int fd, t_map *map)
 
 	full_line = NULL;
 	current_line = get_next_line(fd);
-	map->width = ft_strlen(current_line) - 1;
+	map->width = ft_strlen_read(current_line);
 	if (map->width > map->display_width)
-		error_read("Relax Bro !! Too big map",full_line, current_line);
+		error_read("Relax Bro !! Too big map", full_line, current_line);
 	while (current_line)
 	{
 		tmp = full_line;
 		if (ft_strlen(current_line) == 0 || !ft_strncmp(current_line, "\n", 1))
 			error_read("Invalid map: Empty line detected", tmp, current_line);
+		else if (ft_strlen_read(current_line) != map->width)
+			error_read("Invalid map: Map is not rectangular!", tmp, current_line);
 		map->height++;
 		if (map->height > map->display_height)
 			error_read("Relax Bro !! Too big map", tmp, current_line);
@@ -55,25 +57,10 @@ char	*read_map(char *map_path, int fd, t_map *map)
 	return (full_line);
 }
 
-int	is_rectangle(char **lines, t_map *map)
-{
-	int	y;
-	size_t	firstlength;
-
-	y = 0;
-	firstlength = ft_strlen(lines[0]);
-	while (lines[y])
-	{
-		if (ft_strlen(lines[y]) != firstlength)
-			error_map("Invalid Map: Map is not rectangular!", lines);
-		y++;
-	}
-	return (0);
-}
 
 /* Function to check if the map has only one player, one exit,
 and at least one collectible */
-int	component_check(char **map_lines, t_map *map)
+int	component_check(char **map_lines, t_map *map, char *line)
 {
 	int	x;
 	int	y;
@@ -98,7 +85,7 @@ int	component_check(char **map_lines, t_map *map)
 		}
 		y++;
 	}
-	check_result(flag, map, map_lines);
+	check_result(flag, map, map_lines, line);
 	return (0);
 }
 

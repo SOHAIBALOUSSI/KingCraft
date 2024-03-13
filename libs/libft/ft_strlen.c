@@ -21,3 +21,19 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
+
+size_t	ft_strlen_read(const char *s)
+{
+	int	i;
+	int len;
+	
+	len = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] != '\n')
+			len++;
+		i++;
+	}
+	return (len);
+}

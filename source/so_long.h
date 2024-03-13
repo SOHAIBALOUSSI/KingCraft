@@ -74,14 +74,13 @@ typedef struct	map
 /*						MAP CHECK						*/
 int     validate_map(char *map_path, t_map *map);
 void	error_read(char *error_msg, char *lines, char *current);
-void	error_map(char *error_msg, char **map);
+void	error_map(char *error_msg, char **lines, t_map *map, char *line);
 void	error(char *error_msg);
-char	*read_map(char *map_path, int fd, t_map *map);
+char	*read_map(int fd, t_map *map);
 int		extension_check(char *map_path);
-int		component_check(char **map_lines, t_map *map);
+int		component_check(char **map_lines, t_map *map, char *line);
 int		not_valid_component(char c);
-void	check_result(int flag, t_map *map, char **map_lines);
-int	    is_rectangle(char **lines, t_map *map);
+void	check_result(int flag, t_map *map, char **lines, char *line);
 int		wall_check(char **map_lines);
 void	save_cords_and_count(t_map *map , int x, int y);
 void	free_map(char **map);

@@ -23,10 +23,8 @@ static int	game_events(int pressed_key, t_map *game)
 		move_player(game ,RIGHT);
 	else if (pressed_key == A)
 		move_player(game, LEFT);
-	
 	return (0);
 }
-
 
 void	capture_hook(t_map *game)
 {

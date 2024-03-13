@@ -29,9 +29,9 @@ int	main(int ac, char **av)
 	map = (t_map){0};
 	get_screen_size(&map);
 	validate_map(av[1], &map);
-	// init_mlx(&map);
-	// init_xpm(&map);
-	// init_map(&map);
-	// capture_hook(&map);
-	// mlx_loop(map.ptr);
+	init_mlx(&map);
+	init_xpm(&map);
+	init_map(&map);
+	capture_hook(&map);
+	mlx_loop(map.ptr);
 }

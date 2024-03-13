@@ -21,12 +21,14 @@ void	error(char *error_msg)
 	exit(1);
 }
 
-void	error_read(char *error_msg, char *lines)
+void	error_read(char *error_msg, char *lines, char *current)
 {
 	write(2, "Error\n", 6);
 	ft_printf("%s%s\n",RED, error_msg);
 	free(lines);
+	free(current);
 	lines = NULL;
+	current = NULL;
 	exit(1);
 }
 

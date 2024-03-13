@@ -73,7 +73,7 @@ typedef struct	map
 
 /*						MAP CHECK						*/
 int     validate_map(char *map_path, t_map *map);
-void	error_read(char *error_msg, char *lines);
+void	error_read(char *error_msg, char *lines, char *current);
 void	error_map(char *error_msg, char **map);
 void	error(char *error_msg);
 char	*read_map(char *map_path, int fd, t_map *map);

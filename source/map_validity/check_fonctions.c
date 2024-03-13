@@ -38,18 +38,15 @@ char	*read_map(char *map_path, int fd, t_map *map)
 	current_line = get_next_line(fd);
 	map->width = ft_strlen(current_line) - 1;
 	if (map->width > map->display_width)
-		error_read("Relax Bro !! Too big map", full_line);
+		error_read("Relax Bro !! Too big map",full_line, current_line);
 	while (current_line)
 	{
+		tmp = full_line;
 		if (ft_strlen(current_line) == 0 || !ft_strncmp(current_line, "\n", 1))
-			error_read("Invalid map: Empty line detected", full_line);
+			error_read("Invalid map: Empty line detected", tmp, current_line);
 		map->height++;
 		if (map->height > map->display_height)
-		{
-			free(current_line);
-			error_read("Relax Bro !! Too big map", full_line);
-		}
-		tmp = full_line;
+			error_read("Relax Bro !! Too big map", tmp, current_line);
 		full_line = ft_strjoin(tmp, current_line);
 		free(tmp);
 		free(current_line);

@@ -32,14 +32,13 @@ void	error_read(char *error_msg, char *lines, char *current)
 	exit(1);
 }
 
-void	error_map(char *error_msg, char **lines, t_map *map, char *line)
+void	error_map(char *error_msg, char **lines, t_map *map)
 {
 	write(2, "Error\n", 6);
 	ft_printf("%s%s\n",RED, error_msg);
 	free_map(lines);
-	free(line);
+	free(map->validate_line);
 	exit(1);
-	// free_map(map->map_lines);
 }
 
 void	save_cords_and_count(t_map *map , int x, int y)
@@ -54,14 +53,14 @@ int	not_valid_component(char c)
 	return (c != 'E' && c != 'P' && c != 'C'&& c != '1' && c != '0');
 }
 	
-void	check_result(int flag, t_map *map, char **lines, char *line)
+void	check_result(int flag, t_map *map, char **lines)
 {
 	if (flag == 1 && (map->p_count != 1 || map->e_count != 1 || map->c_count < 1))
-		error_map("Invalid map: Unkown compenent and Duplicate/missing elements found!", lines, map, line);
+		error_map("Invalid map: Unkown compenent and Duplicate/missing elements found!", lines, map);
 	else if (flag == 1)
-		error_map("Invalid Map: Unkown compenent", lines, map, line);
+		error_map("Invalid Map: Unkown compenent", lines, map);
 	else if (map->p_count != 1 || map->e_count != 1 || map->c_count < 1)
-		error_map("Invalid map: Duplicate or missing elements found!", lines, map, line);	
+		error_map("Invalid map: Duplicate or missing elements found!", lines, map);	
 }
 
 void	free_map(char **map)

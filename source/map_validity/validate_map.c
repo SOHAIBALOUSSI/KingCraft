@@ -15,21 +15,20 @@
 int	validate_map(char *map_path, t_map *map)
 {
 	int fd;
-	char *lines;
 	char **all_lines;
 	
-	lines = NULL;
+	map->validate_line = NULL;
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
 		error("Failed to open, Try an existing file");
 	if (extension_check(map_path) == 0)
 		error("Failed to open, Not a '.ber' file");
-	lines = read_map(fd, map);
-	all_lines = ft_split(lines, '\n');
+	map->validate_line = read_map(fd, map);
+	all_lines = ft_split(map->validate_line, '\n');
 	map->map_lines = all_lines;
-	component_check(all_lines, map, lines);
-	wall_check(all_lines);
-	check_valid_path(map);
-	free(lines);
+	component_check(all_lines, map);
+	wall_check(all_lines, map);
+	check_valid_path(all_lines, map);
+	free(map->validate_line);
 	return (0);
 }

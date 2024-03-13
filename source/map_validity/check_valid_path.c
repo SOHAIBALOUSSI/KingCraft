@@ -32,7 +32,7 @@ void	can_reach_exit(char **map, int x, int y, t_map *map_data)
 
 }
 
-int	check_valid_path(t_map *game)
+int		check_valid_path(char **all_lines, t_map *game)
 {
 	int		i;
 
@@ -45,7 +45,13 @@ int	check_valid_path(t_map *game)
 	game->map__[i] = NULL;
 	can_reach_exit(game->map__, game->player_x, game->player_y, game);
 	if ((game->total == game->c_count && game->e_flag == 1))
-		return 0;
+	{
+		free_map(game->map__);
+		return (0);
+	}
 	else
-		error("There is no valid path to Exit/Collectibles");
+	{
+		free_map(game->map__);
+		error_map("There is no valid path to Exit/Collectibles",all_lines, game);
+	}
 }

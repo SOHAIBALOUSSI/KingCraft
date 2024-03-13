@@ -17,7 +17,7 @@ static	void move_player_up(t_map *game, int x, int y)
 			else
 			{
 				printf("You won!");
-				exit(1);
+				exit_game(game);
 			}
 		}
 		game->player_moves++;
@@ -45,7 +45,7 @@ static	void move_player_down(t_map *game, int x, int y)
 			else
 			{
 				printf("You won!");
-				exit(1);
+				exit_game(game);
 			}
 		}
 		game->player_moves++;
@@ -74,7 +74,7 @@ static	void move_player_right(t_map *game, int x, int y)
 			else
 			{
 				printf("You won!");
-				exit(1);
+				exit_game(game);
 			}
 		}
 		game->player_moves++;
@@ -103,7 +103,7 @@ static	void	move_player_left(t_map *game, int x , int y)
 			else
 			{
 				printf("You won!");
-				exit(1);
+				exit_game(game);
 			}
 		}
 		game->player_moves++;

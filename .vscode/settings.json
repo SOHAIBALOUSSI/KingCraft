@@ -4,6 +4,7 @@
         "mlx.h": "c",
         "so_long.h": "c",
         "fcntl.h": "c",
-        "numbers": "c"
+        "numbers": "c",
+        "stdarg.h": "c"
     }
 }

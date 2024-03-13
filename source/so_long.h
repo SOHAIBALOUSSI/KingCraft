@@ -56,6 +56,7 @@ typedef struct	map
 	int			view_;
 	char		**map_lines;
 	char		**map__;
+	char		*validate_line;
 	int			total;
 	int			player_x;
 	int			player_y;
@@ -66,7 +67,7 @@ typedef struct	map
 	t_xpm	*king[4];
 	t_xpm	*wall;
 	t_xpm	*collectible;
-	t_xpm	*princess_exit[6];
+	t_xpm	*princess_exit[4];
 
 }				t_map;
 
@@ -74,18 +75,18 @@ typedef struct	map
 /*						MAP CHECK						*/
 int     validate_map(char *map_path, t_map *map);
 void	error_read(char *error_msg, char *lines, char *current);
-void	error_map(char *error_msg, char **lines, t_map *map, char *line);
+void	error_map(char *error_msg, char **lines, t_map *map);
 void	error(char *error_msg);
 char	*read_map(int fd, t_map *map);
 int		extension_check(char *map_path);
-int		component_check(char **map_lines, t_map *map, char *line);
+int		component_check(char **map_lines, t_map *map);
 int		not_valid_component(char c);
-void	check_result(int flag, t_map *map, char **lines, char *line);
-int		wall_check(char **map_lines);
+void	check_result(int flag, t_map *map, char **lines);
+int		wall_check(char **map_lines, t_map *map);
 void	save_cords_and_count(t_map *map , int x, int y);
 void	free_map(char **map);
 void 	can_reach_exit(char **map, int start_x, int start_y, t_map *map_data);
-int		check_valid_path(t_map *game);
+int		check_valid_path(char **all_lines, t_map *game);
 /*					Initialization						*/
 int 	init_mlx(t_map *mlx);
 void	init_xpm(t_map *game);
@@ -93,6 +94,7 @@ void	init_map(t_map  *game);
 
 void	capture_hook(t_map *game);
 void	move_player(t_map *game, char direction);
+int		exit_game(t_map *game);
 
 
 #endif

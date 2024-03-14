@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 static	void	move_player_up(t_map *game, int x, int y)
 {
@@ -22,12 +22,12 @@ static	void	move_player_up(t_map *game, int x, int y)
 		{
 			if (game->collected != game->c_count)
 			{
-				ft_printf("Colllect all the Hearts to save the Princess\n");
+				printf("Colllect all the Hearts to save the Princess\n");
 				return ;
 			}
 			else
 			{
-				ft_printf("You won!");
+				printf("You won!");
 				exit_game(game);
 			}
 		}
@@ -50,12 +50,12 @@ static	void	move_player_down(t_map *game, int x, int y)
 		{
 			if (game->collected != game->c_count)
 			{
-				ft_printf("Colllect all the Hearts to save the Princess\n");
+				printf("Colllect all the Hearts to save the Princess\n");
 				return ;
 			}
 			else
 			{
-				ft_printf("You won!");
+				printf("You won!");
 				exit_game(game);
 			}
 		}
@@ -79,12 +79,12 @@ static	void	move_player_right(t_map *game, int x, int y)
 		{
 			if (game->collected != game->c_count)
 			{
-				ft_printf("Colllect all the Hearts to save the Princess\n");
+				printf("Colllect all the Hearts to save the Princess\n");
 				return ;
 			}
 			else
 			{
-				ft_printf("You won!");
+				printf("You won!");
 				exit_game(game);
 			}
 		}
@@ -108,12 +108,12 @@ static	void	move_player_left(t_map *game, int x, int y)
 		{
 			if (game->collected != game->c_count)
 			{
-				ft_printf("Colllect all the Hearts to save the Princess\n");
+				printf("Colllect all the Hearts to save the Princess\n");
 				return ;
 			}
 			else
 			{
-				ft_printf("You won!");
+				printf("You won!");
 				exit_game(game);
 			}
 		}

@@ -18,7 +18,7 @@
 # include <stdarg.h> /* variadic functions */
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 10
 # endif
 
 /* Node struct*/
@@ -49,13 +49,14 @@ char	*ft_strdup(const char *s);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
+size_t	ft_strlen_read(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strrchr(const char *s, int c);
 int		ft_tolower(int i);
 int		ft_toupper(int i);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(const char *s1, const char *s2);
+char    *ft_strjoin(const char *s1, const char *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
@@ -80,7 +81,6 @@ int		ft_puthex(unsigned int nb, int type);
 int		ft_putstr(char *str);
 int		ft_putadress(void *arg);
 int		ft_base16(unsigned long nb, char *base);
-size_t	ft_strlen_read(const char *s);
 /* get_next_line function*/
 char	*get_next_line(int fd);
 

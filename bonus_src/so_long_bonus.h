@@ -23,10 +23,12 @@
 
 # define RED "\033[0;31m"
 
-# define W 119
-# define S 115
-# define A 97
-# define D 100
+/* Keysyms from : keysymdef.h */
+# define ESC 0xff1b
+# define W 0x0077
+# define S 0x0073
+# define A 0x0061
+# define D 0x0064
 
 # define UP 'u'
 # define DOWN 'd'

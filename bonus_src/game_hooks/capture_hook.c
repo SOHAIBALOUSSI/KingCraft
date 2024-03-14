@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 static	void	destroy_xpm(t_map *game)
 {
@@ -20,7 +20,7 @@ static	void	destroy_xpm(t_map *game)
 	while (i < 4)
 	{
 		mlx_destroy_image(game->ptr, game->king[i]->xpm_data);
-		mlx_destroy_image(game->ptr, game->princess_exit[i++]->xpm_data);
+		mlx_destroy_image(game->ptr, game->exit[i++]->xpm_data);
 	}
 	mlx_destroy_image(game->ptr, game->bg->xpm_data);
 	mlx_destroy_image(game->ptr, game->wall->xpm_data);
@@ -34,7 +34,7 @@ static	void	free_xpm(t_map *game)
 	i = 0;
 	while (i < 4)
 	{
-		free(game->princess_exit[i]);
+		free(game->exit[i]);
 		free(game->king[i++]);
 	}
 	free(game->wall);

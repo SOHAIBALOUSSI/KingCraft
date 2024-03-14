@@ -15,7 +15,6 @@ NAME = so_long
 #CFLAGS = -Wall -Wextra -Werror
 BNAME = so_long_bonus
 # LIBS PATH
-LIBFT_PATH = ./libs/libft/
 MLX_PATH = ./libs/mlx_linux/
 
 MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
@@ -23,7 +22,7 @@ INCLUDES = -I/usr/include -Imlx
 LIB_MLX = ./mlx/libmlx.a
 
 SO = .source/map_validity/
-LIBFT_SRC = $(addprefix $(LIBFT_PATH), ft_atoi.c ft_lstadd_back_bonus.c ft_memchr.c ft_putendl_fd.c ft_striteri.c ft_strtrim.c \
+LIBFT_SRC = $(addprefix ./libs/libft/, ft_atoi.c ft_lstadd_back_bonus.c ft_memchr.c ft_putendl_fd.c ft_striteri.c ft_strtrim.c \
 ft_bzero.c ft_lstadd_front_bonus.c ft_memcmp.c ft_puthex.c ft_strjoin.c ft_substr.c \
 ft_calloc.c ft_lstclear_bonus.c ft_memcpy.c ft_putnbr.c ft_strlcat.c ft_tolower.c \
 ft_isalnum.c ft_lstdelone_bonus.c ft_memmove.c ft_putnbr_fd.c ft_strlcpy.c ft_toupper.c \
@@ -43,7 +42,7 @@ OBJS = $(SRCS:.c=.o)
 BSRCS = ./bonus_src/main.c $(LIBFT_SRC) $(addprefix ./bonus_src/map_validity/, check_fonctions.c errors.c validate_map.c check_valid_path.c errors_helper.c)\
 		$(addprefix ./bonus_src/initialisation/, init_mlx.c init_xpm.c init_map.c) \
 		$(addprefix ./bonus_src/game_hooks/, capture_hook.c move_player.c)
-BOBJS = $(BSRCS:.c =.o)
+BOBJS = $(BSRCS:.c=.o)
 
 all :$(MLX) $(NAME) 
 

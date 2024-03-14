@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "../mlx/mlx.h"
 # include "../libs/libft/libft.h"
@@ -19,6 +19,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 # define RED "\033[0;31m"
 
@@ -68,7 +69,7 @@ typedef struct map
 	t_xpm		*wall;
 	t_xpm		*collectible;
 	t_xpm		*exit[4];
-
+	t_xpm		*enemy[2];
 }				t_map;
 
 /*						MAP CHECK						*/

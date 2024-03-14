@@ -14,9 +14,9 @@
 
 int	validate_map(char *map_path, t_map *map)
 {
-	int fd;
-	char **all_lines;
-	
+	int		fd;
+	char	**all_lines;
+
 	map->validate_line = NULL;
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)

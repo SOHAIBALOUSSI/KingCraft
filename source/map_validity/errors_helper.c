@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mlx.c                                         :+:      :+:    :+:   */
+/*   errors_helper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sait-alo <sait-alo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/07 21:17:48 by sait-alo          #+#    #+#             */
-/*   Updated: 2024/03/07 21:17:50 by sait-alo         ###   ########.fr       */
+/*   Created: 2024/03/13 15:28:57 by sait-alo          #+#    #+#             */
+/*   Updated: 2024/03/13 15:28:59 by sait-alo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-#include "../../libs/libft/libft.h"
 
-int	init_mlx(t_map *mlx)
+void	free_map(char **map)
 {
-	mlx->ptr = mlx_init();
-	if (!mlx->ptr)
-		return (1);
-	mlx->win = mlx_new_window(mlx->ptr,
-			mlx->width * 60, mlx->height * 60, "batman");
-	if (!mlx->win)
-		return (free(mlx->ptr), 1);
-	return (1);
+	int	i;
+
+	if (map == NULL)
+		return ;
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+	map = NULL;
+}
+
+void	save_cords_and_count(t_map *map, int x, int y)
+{
+	map->p_count++;
+	map->player_x = x;
+	map->player_y = y;
+}
+
+int	not_valid_component(char c)
+{
+	return (c != 'E' && c != 'P' && c != 'C' && c != '1' && c != '0');
 }

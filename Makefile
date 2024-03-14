@@ -13,7 +13,7 @@
 
 NAME = so_long
 #CFLAGS = -Wall -Wextra -Werror
-
+BNAME = so_long_bonus
 # LIBS PATH
 LIBFT_PATH = ./libs/libft/
 MLX_PATH = ./libs/mlx_linux/
@@ -35,13 +35,19 @@ ft_strdup.c ft_strrchr.c ft_base16.c get_next_line_utils.c)
 
 ## SO_LONG SRC HERE ..
 
-SRCS = main.c $(LIBFT_SRC) $(addprefix ./source/map_validity/, check_fonctions.c errors.c validate_map.c check_valid_path.c)\
+SRCS =  ./source/main.c $(LIBFT_SRC) $(addprefix ./source/map_validity/, check_fonctions.c errors.c validate_map.c check_valid_path.c errors_helper.c)\
 		$(addprefix ./source/initialisation/, init_mlx.c init_xpm.c init_map.c) \
 		$(addprefix ./source/game_hooks/, capture_hook.c move_player.c)
-
-
 OBJS = $(SRCS:.c=.o)
+
+BSRCS = ./bonus_src/main.c $(LIBFT_SRC) $(addprefix ./bonus_src/map_validity/, check_fonctions.c errors.c validate_map.c check_valid_path.c errors_helper.c)\
+		$(addprefix ./bonus_src/initialisation/, init_mlx.c init_xpm.c init_map.c) \
+		$(addprefix ./bonus_src/game_hooks/, capture_hook.c move_player.c)
+BOBJS = $(BSRCS:.c =.o)
+
 all :$(MLX) $(NAME) 
+
+bonus : $(MLX) $(BNAME)
 
 $(MLX):
 	@make -C $(MLX_PATH)
@@ -51,10 +57,14 @@ $(MLX):
 
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@ $(MLX_FLAGS)
+
+$(BNAME) : $(BOBJS)
+	$(CC) $(CFLAGS) $^ -o $@ $(MLX_FLAGS)
+	
 clean:
-	@rm -f $(OBJS)
+	@rm -f $(OBJS) $(BOBJS)
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(BNAME)
 
 re : fclean all

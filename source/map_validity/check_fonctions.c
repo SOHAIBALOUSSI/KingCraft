@@ -22,8 +22,8 @@ int	extension_check(char *map_path)
 	if (!extention)
 		return (0);
 	if (ft_strlen(extention) != 4)
-			return (0);
-	if (ft_strncmp(extention, ".ber", 4) == 0 )
+		return (0);
+	if (ft_strncmp(extention, ".ber", 4) == 0)
 		return (1);
 	return (0);
 }
@@ -45,7 +45,7 @@ char	*read_map(int fd, t_map *map)
 		if (ft_strlen(current_line) == 0 || !ft_strncmp(current_line, "\n", 1))
 			error_read("Invalid map: Empty line detected", tmp, current_line);
 		else if (ft_strlen_read(current_line) != map->width)
-			error_read("Invalid map: Map is not rectangular!", tmp, current_line);
+			error_read("Invalid map: Map not rectangular!", tmp, current_line);
 		map->height++;
 		if (map->height > map->display_height)
 			error_read("Relax Bro !! Too big map height", tmp, current_line);
@@ -57,14 +57,13 @@ char	*read_map(int fd, t_map *map)
 	return (full_line);
 }
 
-
 /* Function to check if the map has only one player, one exit,
 and at least one collectible */
 int	component_check(char **map_lines, t_map *map)
 {
 	int	x;
 	int	y;
-	int flag;
+	int	flag;
 
 	y = 0;
 	flag = 0;
@@ -74,7 +73,7 @@ int	component_check(char **map_lines, t_map *map)
 		while (map_lines[y][x])
 		{
 			if (map_lines[y][x] == 'P')
-				save_cords_and_count(map , x, y);
+				save_cords_and_count(map, x, y);
 			else if (map_lines[y][x] == 'E')
 				map->e_count++;
 			else if (map_lines[y][x] == 'C')
@@ -101,14 +100,15 @@ int	wall_check(char **map_lines, t_map *map)
 	{
 		len = ft_strlen(map_lines[y]);
 		if (len < 3 || map_lines[y][0] != '1' || map_lines[y][len - 1] != '1')
-			error_map("Invalid map : missing walls around edges", map_lines, map);
+			error_map("Invalid map : Missing walls in edges", map_lines, map);
 		if (y == 0 || map_lines[y + 1] == NULL)
 		{
 			x = 0;
 			while (map_lines[y][x])
 			{
 				if (map_lines[y][x] != '1')
-					error_map("Invalid map : missing top or down walls",map_lines, map);
+					error_map("Invalid map:Missing top/down walls",
+						map_lines, map);
 				x++;
 			}
 		}

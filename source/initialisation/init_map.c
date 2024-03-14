@@ -12,46 +12,47 @@
 
 #include "../so_long.h"
 
-static	int push_image(t_map *game, t_xpm *image, int x, int y)
+static	int	push_image(t_map *game, t_xpm *image, int x, int y)
 {
-
 	image->x = x * 60;
 	image->y = y * 60;
 	return (mlx_put_image_to_window(game->ptr, game->win, image->xpm_data,
-		image->x, image->y));
+			image->x, image->y));
 }
 
-static 	void	push_player_image(t_map *game, int x, int y)
+static	void	push_player_image(t_map *game, int x, int y)
 {
 	if (game->view_ == 0)
 	{
-		if (game->map_lines[y][x + 1] == 'E' && game->collected == game->c_count)
+		if (game->map_lines[y][x + 1] == 'E' &&
+			(game->collected == game->c_count))
 			push_image(game, game->king[2], x, y);
 		else
 			push_image(game, game->king[0], x, y);
 	}
 	else
 	{
-		if (game->map_lines[y][x - 1] == 'E' && game->collected == game->c_count)
+		if (game->map_lines[y][x - 1] == 'E' &&
+			(game->collected == game->c_count))
 			push_image(game, game->king[3], x, y);
 		else
 			push_image(game, game->king[1], x, y);
 	}
 }
 
-static	void	push_exit_image(t_map *game ,int x, int y)
+static	void	push_exit_image(t_map *game, int x, int y)
 {
 	if ((game->map_lines[y][x + 1] == '1') || game->player_x <= x)
 	{
 		if (game->c_count == game->collected)
-			push_image(game, game->princess_exit[0], x, y); // left
+			push_image(game, game->princess_exit[0], x, y);
 		else
 			push_image(game, game->princess_exit[1], x, y);
 	}
 	else
 	{
 		if (game->c_count == game->collected)
-			push_image(game, game->princess_exit[2], x, y); // right
+			push_image(game, game->princess_exit[2], x, y);
 		else
 			push_image(game, game->princess_exit[3], x, y);
 	}
@@ -64,13 +65,14 @@ static	void	check_element_and_push(t_map *game, int x, int y, char element)
 	else if (element == '1')
 		push_image(game, game->wall, x, y);
 	else if (element == 'C')
-		push_image(game , game->collectible, x, y);
+		push_image(game, game->collectible, x, y);
 	else if (element == 'E')
 		push_exit_image(game, x, y);
 	else if (element == 'P')
 		push_player_image(game, x, y);
 }
-void	init_map(t_map  *game)
+
+void	init_map(t_map *game)
 {
 	int	x;
 	int	y;

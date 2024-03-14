@@ -5,6 +5,7 @@
         "so_long.h": "c",
         "fcntl.h": "c",
         "numbers": "c",
-        "stdarg.h": "c"
+        "stdarg.h": "c",
+        "so_long_bonus.h": "c"
     }
 }

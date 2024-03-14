@@ -15,26 +15,26 @@
 
 void	can_reach_exit(char **map, int x, int y, t_map *map_data)
 {
-	if (x < 0 || y < 0 || x >= map_data->width || y >= map_data->height || map[y][x] == '1' )
+	if (x < 0 || y < 0 || x >= map_data->width
+		|| y >= map_data->height || map[y][x] == '1' )
 		return ;
-	if(map[y][x] == 'E')
+	if (map[y][x] == 'E')
 	{
 		map_data->e_flag = 1;
 		return ;
 	}
-	if ( map[y][x] == 'C')
+	if (map[y][x] == 'C')
 		map_data->total++;
-    map[y][x] = '1';
-    can_reach_exit(map, x + 1, y, map_data);
-    can_reach_exit(map, x - 1, y, map_data);
-    can_reach_exit(map, x, y + 1, map_data);
-    can_reach_exit(map, x, y - 1, map_data); 
-
+	map[y][x] = '1';
+	can_reach_exit(map, x + 1, y, map_data);
+	can_reach_exit(map, x - 1, y, map_data);
+	can_reach_exit(map, x, y + 1, map_data);
+	can_reach_exit(map, x, y - 1, map_data);
 }
 
-int		check_valid_path(char **all_lines, t_map *game)
+int	check_valid_path(char **all_lines, t_map *game)
 {
-	int		i;
+	int	i;
 
 	i = -1;
 	game->map__ = (char **)malloc(sizeof(char *) * (game->height + 1));
@@ -52,6 +52,8 @@ int		check_valid_path(char **all_lines, t_map *game)
 	else
 	{
 		free_map(game->map__);
-		error_map("There is no valid path to Exit/Collectibles",all_lines, game);
+		error_map("There is no valid path to Exit/Collectibles",
+			all_lines, game);
 	}
+	return (0);
 }

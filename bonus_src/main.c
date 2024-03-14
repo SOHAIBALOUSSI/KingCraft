@@ -21,7 +21,16 @@ static	void	get_screen_size(t_map *game)
 	free(game->ptr);
 }
 
-static int fps(void *param);
+static int fps(t_map *game)
+{
+	// game->exit_frame = 1;
+	if (game->c_count == game->collected && game->exit_frame < 4)
+		game->exit_frame++;
+	
+	init_map(game);
+	usleep(100000);
+	return(1);
+}
 
 int	main(int ac, char **av)
 {

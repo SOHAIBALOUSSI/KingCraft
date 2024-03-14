@@ -70,8 +70,12 @@ typedef struct map
 	t_xpm		*king[4];
 	t_xpm		*wall;
 	t_xpm		*collectible;
-	t_xpm		*exit[4];
+	t_xpm		*exit_left[5];
+	t_xpm		*exit_right[5];
 	t_xpm		*enemy[2];
+	int			exit_frame;
+	int			collectible_frame;
+	int			death_frame;
 }				t_map;
 
 /*						MAP CHECK						*/

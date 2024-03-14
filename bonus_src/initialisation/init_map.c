@@ -42,19 +42,19 @@ static	void	push_player_image(t_map *game, int x, int y)
 
 static	void	push_exit_image(t_map *game, int x, int y)
 {
-	if ((game->map_lines[y][x + 1] == '1') || game->player_x <= x)
+	if (game->player_x <= x)
 	{
 		if (game->c_count == game->collected)
-			push_image(game, game->exit[0], x, y);
+			push_image(game, game->exit_left[game->exit_frame], x, y);
 		else
-			push_image(game, game->exit[1], x, y);
+			push_image(game, game->exit_left[0], x, y);
 	}
 	else
 	{
 		if (game->c_count == game->collected)
-			push_image(game, game->exit[2], x, y);
+			push_image(game, game->exit_right[game->exit_frame], x, y);
 		else
-			push_image(game, game->exit[3], x, y);
+			push_image(game, game->exit_right[0], x, y);
 	}
 }
 
@@ -80,6 +80,7 @@ void	init_map(t_map *game)
 	int	y;
 
 	y = 0;
+	mlx_clear_window(game->ptr, game->win);
 	while (game->map_lines[y])
 	{
 		x = 0;

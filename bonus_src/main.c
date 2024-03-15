@@ -24,10 +24,16 @@ static	void	get_screen_size(t_map *game)
 static int fps(t_map *game)
 {
 	// game->exit_frame = 1;
+	game->king_frame = 0;
 	if (game->c_count == game->collected && game->exit_frame < 4)
 		game->exit_frame++;
+	if (game->death_frame < 3 && game->death_flag)
+		game->death_frame++;
+	game->princess_frame = (game->princess_frame + 1) % 2;
 	
 	init_map(game);
+	game->king_frame = (game->king_frame + 1) % 2;
+
 	usleep(100000);
 	return(1);
 }

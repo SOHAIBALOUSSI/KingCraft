@@ -67,15 +67,22 @@ typedef struct map
 	void		*ptr;
 	void		*win;
 	t_xpm		*bg;
-	t_xpm		*king[4];
+	t_xpm		*king_right[3];
+	t_xpm		*king_left[3];
 	t_xpm		*wall;
 	t_xpm		*collectible;
-	t_xpm		*exit_left[5];
-	t_xpm		*exit_right[5];
+	t_xpm		*exit_left[4];
+	t_xpm		*exit_right[4];
+	t_xpm		*exit_idle_left[2];
+	t_xpm		*exit_idle_right[2];
 	t_xpm		*enemy[2];
+	t_xpm		*king_death[4];
 	int			exit_frame;
 	int			collectible_frame;
 	int			death_frame;
+	int			king_frame;
+	int			princess_frame;
+	int			death_flag;
 }				t_map;
 
 /*						MAP CHECK						*/

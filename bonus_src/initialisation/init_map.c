@@ -26,18 +26,19 @@ static	void	push_player_image(t_map *game, int x, int y)
 	{
 		if (game->map_lines[y][x + 1] == 'E' &&
 			(game->collected == game->c_count))
-			push_image(game, game->king[2], x, y);
+			push_image(game, game->king_right[2], x, y);
 		else
-			push_image(game, game->king[0], x, y);
+			push_image(game, game->king_right[game->king_frame], x, y);
 	}
 	else
 	{
 		if (game->map_lines[y][x - 1] == 'E' &&
 			(game->collected == game->c_count))
-			push_image(game, game->king[3], x, y);
+			push_image(game, game->king_left[2], x, y);
 		else
-			push_image(game, game->king[1], x, y);
+			push_image(game, game->king_left[game->king_frame], x, y);
 	}
+
 }
 
 static	void	push_exit_image(t_map *game, int x, int y)
@@ -45,14 +46,20 @@ static	void	push_exit_image(t_map *game, int x, int y)
 	if (game->player_x <= x)
 	{
 		if (game->c_count == game->collected)
+		{
 			push_image(game, game->exit_left[game->exit_frame], x, y);
+			push_image(game, game->exit_idle_left[game->princess_frame], x, y);
+		}
 		else
 			push_image(game, game->exit_left[0], x, y);
 	}
 	else
 	{
 		if (game->c_count == game->collected)
+		{	
 			push_image(game, game->exit_right[game->exit_frame], x, y);
+			push_image(game, game->exit_idle_right[game->princess_frame], x, y);
+		}
 		else
 			push_image(game, game->exit_right[0], x, y);
 	}
@@ -69,7 +76,11 @@ static	void	check_element_and_push(t_map *game, int x, int y, char element)
 	else if (element == 'E')
 		push_exit_image(game, x, y);
 	else if (element == 'P')
+	{	
 		push_player_image(game, x, y);
+		if (game->death_flag == 1)
+			push_image(game, game->king_death[game->death_frame], x , y);
+	}
 	else if (element == 'W')
 		push_image(game, game->enemy[0], x, y);
 }

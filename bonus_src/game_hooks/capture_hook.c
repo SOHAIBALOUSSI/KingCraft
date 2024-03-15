@@ -17,19 +17,28 @@ static	void	destroy_xpm(t_map *game)
 	int	i;
 
 	i = -1;
-	while (++i < 4)
-		mlx_destroy_image(game->ptr, game->king[i]->xpm_data);
+	while (++i < 3)
+	{
+		mlx_destroy_image(game->ptr, game->king_left[i]->xpm_data);
+		mlx_destroy_image(game->ptr, game->king_right[i]->xpm_data);
+	}
 	i = -1;
-	while (++i < 5)
+	while (++i < 4)
 	{
 		mlx_destroy_image(game->ptr, game->exit_left[i]->xpm_data);
 		mlx_destroy_image(game->ptr, game->exit_right[i]->xpm_data);
 	}
+	i = -1;
+	while (++i < 2)
+	{
+		mlx_destroy_image(game->ptr, game->exit_idle_left[i]->xpm_data);
+		mlx_destroy_image(game->ptr, game->exit_idle_right[i]->xpm_data);
+		mlx_destroy_image(game->ptr, game->enemy[i]->xpm_data);
+
+	}
 	mlx_destroy_image(game->ptr, game->bg->xpm_data);
 	mlx_destroy_image(game->ptr, game->wall->xpm_data);
 	mlx_destroy_image(game->ptr, game->collectible->xpm_data);
-	mlx_destroy_image(game->ptr, game->enemy[0]->xpm_data);
-	mlx_destroy_image(game->ptr, game->enemy[1]->xpm_data);
 }
 
 static	void	free_xpm(t_map *game)
@@ -37,19 +46,27 @@ static	void	free_xpm(t_map *game)
 	int	i;
 
 	i = -1;
-	while (++i < 4)
-		free(game->king[i]);
+	while (++i < 3)
+	{
+		free(game->king_right[i]);
+		free(game->king_left[i]);
+	}
 	i = -1;
-	while (++i < 5)
+	while (++i < 4)
 	{
 		free(game->exit_left[i]);
 		free(game->exit_right[i]);
 	}
+	i = -1;
+	while (++i < 2)
+	{
+		free(game->exit_idle_left[i]);
+		free(game->exit_idle_right[i]);
+		free(game->enemy[i]);
+	}
 	free(game->wall);
 	free(game->bg);
 	free(game->collectible);
-	free(game->enemy[0]);
-	free(game->enemy[1]);
 }
 
 int	exit_game(t_map *game)

@@ -22,14 +22,19 @@ static	void	move_player_up(t_map *game, int x, int y)
 		{
 			if (game->collected != game->c_count)
 			{
-				printf("Colllect all the Hearts to save the Princess\n");
+				ft_printf("Colllect all the Hearts to save the Princess\n");
 				return ;
 			}
 			else
 			{
-				printf("You won!");
+				ft_printf("You won!");
 				exit_game(game);
 			}
+		}
+		else if (game->map_lines[y - 1][x] == 'W')
+		{
+			printf("k3k3");
+			game->death_flag = 1;
 		}
 		game->player_moves++;
 		game->map_lines[y][x] = '0';
@@ -50,14 +55,19 @@ static	void	move_player_down(t_map *game, int x, int y)
 		{
 			if (game->collected != game->c_count)
 			{
-				printf("Colllect all the Hearts to save the Princess\n");
+				ft_printf("Colllect all the Hearts to save the Princess\n");
 				return ;
 			}
 			else
 			{
-				printf("You won!");
+				ft_printf("You won!");
 				exit_game(game);
 			}
+		}
+		else if (game->map_lines[y + 1][x] == 'W')
+		{
+			printf("k3k3");
+			game->death_flag = 1;
 		}
 		game->player_moves++;
 		game->map_lines[y][x] = '0';
@@ -79,14 +89,19 @@ static	void	move_player_right(t_map *game, int x, int y)
 		{
 			if (game->collected != game->c_count)
 			{
-				printf("Colllect all the Hearts to save the Princess\n");
+				ft_printf("Colllect all the Hearts to save the Princess\n");
 				return ;
 			}
 			else
 			{
-				printf("You won!");
+				ft_printf("You won!");
 				exit_game(game);
 			}
+		}
+		else if (game->map_lines[y][x + 1] == 'W')
+		{
+			printf("k3k3");
+			game->death_flag = 1;
 		}
 		game->player_moves++;
 		game->map_lines[y][x] = '0';
@@ -108,14 +123,19 @@ static	void	move_player_left(t_map *game, int x, int y)
 		{
 			if (game->collected != game->c_count)
 			{
-				printf("Colllect all the Hearts to save the Princess\n");
+				ft_printf("Colllect all the Hearts to save the Princess\n");
 				return ;
 			}
 			else
 			{
-				printf("You won!");
+				ft_printf("You won!");
 				exit_game(game);
 			}
+		}
+		else if (game->map_lines[y][x - 1] == 'W')
+		{
+			printf("k3k3");
+			game->death_flag = 1;
 		}
 		game->player_moves++;
 		game->map_lines[y][x] = '0';

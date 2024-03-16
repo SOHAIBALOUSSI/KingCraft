@@ -21,7 +21,11 @@
 # include <unistd.h>
 # include <stdio.h>
 
-# define RED "\033[0;31m"
+/*			Colors			*/
+# define RED "\e[0;31m"
+# define GREEN "\e[1;32m"
+# define GOLD "\e[38;2;255;215;0m"
+# define CLEAR "\e[0;37m"
 
 /* Keysyms from : keysymdef.h */
 # define ESC 0xff1b
@@ -51,6 +55,7 @@ typedef struct map
 	int			p_count;
 	int			c_count;
 	int			e_flag;
+	int			w_count;
 	int			width;
 	int			height;
 	int			display_width;
@@ -83,6 +88,9 @@ typedef struct map
 	int			king_frame;
 	int			princess_frame;
 	int			death_flag;
+	int			e_direction;
+	int			enemy_reach_left;
+	int			enemy_reach_right;
 }				t_map;
 
 /*						MAP CHECK						*/
@@ -93,7 +101,7 @@ void	error(char *error_msg);
 char	*read_map(int fd, t_map *map);
 int		extension_check(char *map_path);
 int		component_check(char **map_lines, t_map *map);
-int		not_valid_component(char c);
+int		not_valid_component(char c, t_map *map);
 void	check_result(int flag, t_map *map, char **lines);
 int		wall_check(char **map_lines, t_map *map);
 void	save_cords_and_count(t_map *map, int x, int y);
@@ -108,5 +116,8 @@ void	init_map(t_map *game);
 void	capture_hook(t_map *game);
 void	move_player(t_map *game, char direction);
 int		exit_game(t_map *game);
+
+void 	patrolling_enemy(t_map *game);
+void	exit_death(t_map *game);
 
 #endif

@@ -6,6 +6,9 @@
         "fcntl.h": "c",
         "numbers": "c",
         "stdarg.h": "c",
-        "so_long_bonus.h": "c"
+        "so_long_bonus.h": "c",
+        "time.h": "c",
+        "atomic": "c",
+        "mlx_int.h": "c"
     }
 }

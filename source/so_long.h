@@ -20,8 +20,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-/*	Colors	*/
-# define RED "\033[0;31m"
+/*			Colors			*/
+# define RED "\e[0;31m"
+# define GREEN "\e[1;32m"
+# define GOLD "\e[38;2;255;215;0m"
+# define CLEAR "\e[0;37m"
 
 /* Keysyms from : keysymdef.h */
 # define ESC 0xff1b
@@ -97,5 +100,8 @@ void	init_map(t_map *game);
 void	capture_hook(t_map *game);
 void	move_player(t_map *game, char direction);
 int		exit_game(t_map *game);
+void	exit_won(t_map *game);
+void    print_moves(t_map *game);
+
 
 #endif

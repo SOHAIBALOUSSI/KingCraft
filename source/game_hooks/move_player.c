@@ -12,6 +12,7 @@
 
 #include "../so_long.h"
 
+
 static	void	move_player_up(t_map *game, int x, int y)
 {
 	if (game->map_lines[y - 1][x] != '1')
@@ -22,20 +23,16 @@ static	void	move_player_up(t_map *game, int x, int y)
 		{
 			if (game->collected != game->c_count)
 			{
-				ft_printf("Colllect all the Hearts to save the Princess\n");
+				ft_printf("%sHelp !\n%s", GOLD, CLEAR);
 				return ;
 			}
 			else
-			{
-				ft_printf("You won!");
-				exit_game(game);
-			}
+				exit_won(game);
 		}
-		game->player_moves++;
+		print_moves(game);
 		game->map_lines[y][x] = '0';
 		game->map_lines[y - 1][x] = 'P';
 		game->player_y = y - 1;
-		ft_printf("King moves : %d\n", game->player_moves);
 		init_map(game);
 	}
 }
@@ -50,20 +47,16 @@ static	void	move_player_down(t_map *game, int x, int y)
 		{
 			if (game->collected != game->c_count)
 			{
-				ft_printf("Colllect all the Hearts to save the Princess\n");
+				ft_printf("%sHelp !\n%s", GOLD, CLEAR);
 				return ;
 			}
 			else
-			{
-				ft_printf("You won!");
-				exit_game(game);
-			}
+				exit_won(game);
 		}
-		game->player_moves++;
+		print_moves(game);
 		game->map_lines[y][x] = '0';
 		game->map_lines[y + 1][x] = 'P';
 		game->player_y = y + 1;
-		ft_printf("King moves : %d\n", game->player_moves);
 		init_map(game);
 	}
 }
@@ -79,20 +72,16 @@ static	void	move_player_right(t_map *game, int x, int y)
 		{
 			if (game->collected != game->c_count)
 			{
-				ft_printf("Colllect all the Hearts to save the Princess\n");
+				ft_printf("%sHelp !\n%s", GOLD, CLEAR);
 				return ;
 			}
 			else
-			{
-				ft_printf("You won!");
-				exit_game(game);
-			}
+				exit_won(game);
 		}
-		game->player_moves++;
+		print_moves(game);
 		game->map_lines[y][x] = '0';
 		game->map_lines[y][x + 1] = 'P';
 		game->player_x = x + 1;
-		ft_printf("King moves : %d\n", game->player_moves);
 		init_map(game);
 	}
 }
@@ -108,20 +97,16 @@ static	void	move_player_left(t_map *game, int x, int y)
 		{
 			if (game->collected != game->c_count)
 			{
-				ft_printf("Colllect all the Hearts to save the Princess\n");
+				ft_printf("%sHelp !\n%s", GOLD, CLEAR);
 				return ;
 			}
 			else
-			{
-				ft_printf("You won!");
-				exit_game(game);
-			}
+				exit_won(game);
 		}
-		game->player_moves++;
+		print_moves(game);
 		game->map_lines[y][x] = '0';
 		game->map_lines[y][x - 1] = 'P';
 		game->player_x = x - 1;
-		ft_printf("King moves : %d\n", game->player_moves);
 		init_map(game);
 	}
 }

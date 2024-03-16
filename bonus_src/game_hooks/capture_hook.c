@@ -25,6 +25,7 @@ static	void	destroy_xpm(t_map *game)
 	i = -1;
 	while (++i < 4)
 	{
+		mlx_destroy_image(game->ptr, game->king_death[i]->xpm_data);
 		mlx_destroy_image(game->ptr, game->exit_left[i]->xpm_data);
 		mlx_destroy_image(game->ptr, game->exit_right[i]->xpm_data);
 	}
@@ -34,7 +35,6 @@ static	void	destroy_xpm(t_map *game)
 		mlx_destroy_image(game->ptr, game->exit_idle_left[i]->xpm_data);
 		mlx_destroy_image(game->ptr, game->exit_idle_right[i]->xpm_data);
 		mlx_destroy_image(game->ptr, game->enemy[i]->xpm_data);
-
 	}
 	mlx_destroy_image(game->ptr, game->bg->xpm_data);
 	mlx_destroy_image(game->ptr, game->wall->xpm_data);
@@ -56,6 +56,7 @@ static	void	free_xpm(t_map *game)
 	{
 		free(game->exit_left[i]);
 		free(game->exit_right[i]);
+		free(game->king_death[i]);
 	}
 	i = -1;
 	while (++i < 2)
@@ -71,12 +72,14 @@ static	void	free_xpm(t_map *game)
 
 int	exit_game(t_map *game)
 {
+	ft_printf("End ..\n");
 	free_map(game->map_lines);
 	destroy_xpm(game);
 	free_xpm(game);
 	mlx_destroy_window(game->ptr, game->win);
 	mlx_destroy_display(game->ptr);
 	free(game->ptr);
+	system("killall vlc");
 	exit(0);
 	return (0);
 }

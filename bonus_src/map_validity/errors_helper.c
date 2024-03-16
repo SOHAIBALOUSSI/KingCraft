@@ -35,8 +35,10 @@ void	save_cords_and_count(t_map *map, int x, int y)
 	map->player_y = y;
 }
 
-int	not_valid_component(char c)
+int	not_valid_component(char c, t_map *map)
 {
+	if (c == 'W')
+		map->w_count++;
 	return (c != 'E' && c != 'P' && c != 'C'
 		&& c != '1' && c != '0' && c != 'W');
 }

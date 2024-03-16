@@ -51,4 +51,6 @@ void	check_result(int flag, t_map *map, char **lines)
 		error_map("Invalid Map: Unkown compenent", lines, map);
 	else if (map->p_count != 1 || map->e_count != 1 || map->c_count < 1)
 		error_map("Duplicate/missing elements found!", lines, map);
+	else if (map->w_count > 1)
+		error_map("Too many enemies! You can't even defeat one", lines, map);
 }

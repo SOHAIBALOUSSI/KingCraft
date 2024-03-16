@@ -12,7 +12,7 @@
 
 
 NAME = so_long
-#CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 BNAME = so_long_bonus
 # LIBS PATH
 MLX_PATH = ./libs/mlx_linux/
@@ -36,12 +36,12 @@ ft_strdup.c ft_strrchr.c ft_base16.c get_next_line_utils.c)
 
 SRCS =  ./source/main.c $(LIBFT_SRC) $(addprefix ./source/map_validity/, check_fonctions.c errors.c validate_map.c check_valid_path.c errors_helper.c)\
 		$(addprefix ./source/initialisation/, init_mlx.c init_xpm.c init_map.c) \
-		$(addprefix ./source/game_hooks/, capture_hook.c move_player.c)
+		$(addprefix ./source/game_hooks/, capture_hook.c move_player.c exit_status.c)
 OBJS = $(SRCS:.c=.o)
 
-BSRCS = ./bonus_src/main.c $(LIBFT_SRC) $(addprefix ./bonus_src/map_validity/, check_fonctions.c errors.c validate_map.c check_valid_path.c errors_helper.c)\
+BSRCS = ./bonus_src/bonus_main.c $(LIBFT_SRC) $(addprefix ./bonus_src/map_validity/, check_fonctions.c errors.c validate_map.c check_valid_path.c errors_helper.c)\
 		$(addprefix ./bonus_src/initialisation/, init_mlx.c init_xpm.c init_map.c) \
-		$(addprefix ./bonus_src/game_hooks/, capture_hook.c move_player.c)
+		$(addprefix ./bonus_src/game_hooks/, capture_hook.c move_player.c patroling_enemy.c) 
 BOBJS = $(BSRCS:.c=.o)
 
 all :$(MLX) $(NAME) 
@@ -62,7 +62,7 @@ $(BNAME) : $(BOBJS)
 	
 clean:
 	@rm -f $(OBJS) $(BOBJS)
-
+	
 fclean: clean
 	@rm -f $(NAME) $(BNAME)
 

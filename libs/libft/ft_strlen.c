@@ -22,7 +22,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-size_t	ft_strlen_read(const char *s)
+int	ft_strlen_read(const char *s)
 {
 	int	i;
 	int	len;

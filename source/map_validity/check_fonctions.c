@@ -37,7 +37,7 @@ char	*read_map(int fd, t_map *map)
 	full_line = NULL;
 	current_line = get_next_line(fd);
 	map->width = ft_strlen_read(current_line);
-	if (map->width > map->display_width)
+	if (map->width > map->display_width / 60)
 		error_read("Relax Bro !! Too big width", full_line, current_line);
 	while (current_line)
 	{
@@ -47,7 +47,7 @@ char	*read_map(int fd, t_map *map)
 		else if (ft_strlen_read(current_line) != map->width)
 			error_read("Invalid map: Map not rectangular!", tmp, current_line);
 		map->height++;
-		if (map->height > map->display_height)
+		if (map->height > map->display_height / 60)
 			error_read("Relax Bro !! Too big map height", tmp, current_line);
 		full_line = ft_strjoin(tmp, current_line);
 		free(tmp);
@@ -107,7 +107,7 @@ int	wall_check(char **map_lines, t_map *map)
 			while (map_lines[y][x])
 			{
 				if (map_lines[y][x] != '1')
-					error_map("Invalid map:Missing top/down walls",
+					error_map("Invalid map : Missing top/down walls",
 						map_lines, map);
 				x++;
 			}

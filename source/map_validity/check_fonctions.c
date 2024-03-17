@@ -36,9 +36,11 @@ char	*read_map(int fd, t_map *map)
 
 	full_line = NULL;
 	current_line = get_next_line(fd);
+	if (!current_line)
+		return (NULL);
 	map->width = ft_strlen_read(current_line);
-	if (map->width > map->display_width / 60)
-		error_read("Relax Bro !! Too big width", full_line, current_line);
+	if (map->width > (map->display_width / 60))
+		error_read("Can't Open, Too big width", full_line, current_line);
 	while (current_line)
 	{
 		tmp = full_line;
@@ -48,7 +50,7 @@ char	*read_map(int fd, t_map *map)
 			error_read("Invalid map: Map not rectangular!", tmp, current_line);
 		map->height++;
 		if (map->height > map->display_height / 60)
-			error_read("Relax Bro !! Too big map height", tmp, current_line);
+			error_read("Can't Open, Too big map height", tmp, current_line);
 		full_line = ft_strjoin(tmp, current_line);
 		free(tmp);
 		free(current_line);

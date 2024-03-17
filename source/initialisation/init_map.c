@@ -42,7 +42,7 @@ static	void	push_player_image(t_map *game, int x, int y)
 
 static	void	push_exit_image(t_map *game, int x, int y)
 {
-	if ((game->map_lines[y][x + 1] == '1') || game->player_x <= x)
+	if (game->player_x <= x)
 	{
 		if (game->c_count == game->collected)
 			push_image(game, game->princess_exit[0], x, y);
@@ -61,7 +61,7 @@ static	void	push_exit_image(t_map *game, int x, int y)
 static	void	check_element_and_push(t_map *game, int x, int y, char element)
 {
 	if (element == '0')
-		push_image(game, game->bg, x, y);
+		push_image(game, game->bg, x, y); 
 	else if (element == '1')
 		push_image(game, game->wall, x, y);
 	else if (element == 'C')

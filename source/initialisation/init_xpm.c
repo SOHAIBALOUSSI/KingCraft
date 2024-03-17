@@ -33,9 +33,9 @@ void	init_xpm(t_map *game)
 	game->king[2] = create_image(game, "./assets/king-heart-right.xpm");
 	game->king[3] = create_image(game, "./assets/king-heart-left.xpm");
 	game->princess_exit[0] = create_image(game, "./assets/princess-left.xpm");
-	game->princess_exit[1] = create_image(game, "./assets/closed-prison-left.xpm");
+	game->princess_exit[1] = create_image(game, "./assets/EXIT-LEFT-0.xpm");
 	game->princess_exit[2] = create_image(game, "./assets/princess-right.xpm");
-	game->princess_exit[3] = create_image(game, "./assets/closed-prison-right.xpm");
+	game->princess_exit[3] = create_image(game, "./assets/EXIT-RIGHT-0.xpm");
 	game->bg = create_image(game, "./assets/bg.xpm");
 	game->wall = create_image(game, "./assets/wall.xpm");
 	game->collectible = create_image(game, "./assets/c1.xpm");

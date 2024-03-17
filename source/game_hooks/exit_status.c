@@ -51,6 +51,5 @@ void	exit_won(t_map *game)
 void	print_moves(t_map *game)
 {
 	game->player_moves++;
-	ft_printf("King moves : %s%d%s\n", GOLD, 
-		game->player_moves, CLEAR);
+	ft_printf("King moves : %s%d%s\n", GOLD, game->player_moves, CLEAR);
 }

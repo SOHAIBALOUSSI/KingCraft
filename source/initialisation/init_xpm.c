@@ -26,6 +26,7 @@ static	t_xpm	*create_image(t_map	*mlx, char *path)
 	return (asset);
 }
 
+/* Function to initalize all the assets and make theme ready to push*/
 void	init_xpm(t_map *game)
 {
 	game->king[0] = create_image(game, "./assets/king-right.xpm");

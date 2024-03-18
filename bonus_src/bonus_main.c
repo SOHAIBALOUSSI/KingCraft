@@ -37,13 +37,13 @@ static	int	fps(t_map *game)
 			exit_game(game);
 		exit_wait++;
 	}
-	if (enemy_wait % 10 == 0)
+	if (enemy_wait % 5 == 0)
 		patrolling_enemy(game);
 	enemy_wait++;
 	game->princess_frame = (game->princess_frame + 1) % 2;
 	init_map(game);
 	game->king_frame = (game->king_frame + 1) % 2;
-	usleep(100500);
+	usleep(100000);
 	return (1);
 }
 

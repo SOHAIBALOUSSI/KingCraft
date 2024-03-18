@@ -65,6 +65,7 @@ typedef struct map
 	char		**map_lines;
 	char		**map__;
 	char		*validate_line;
+	char		*moves;
 	int			total;
 	int			player_x;
 	int			player_y;
@@ -99,6 +100,7 @@ void	error_read(char *error_msg, char *lines, char *current);
 void	error_map(char *error_msg, char **lines, t_map *map);
 void	error(char *error_msg);
 char	*read_map(int fd, t_map *map);
+void	read_errors_check(t_map *map, char *current_line, char *tmp);
 int		extension_check(char *map_path);
 int		component_check(char **map_lines, t_map *map);
 int		not_valid_component(char c, t_map *map);
@@ -117,7 +119,8 @@ void	capture_hook(t_map *game);
 void	move_player(t_map *game, char direction);
 int		exit_game(t_map *game);
 
-void 	patrolling_enemy(t_map *game);
+void	patrolling_enemy(t_map *game);
 void	exit_death(t_map *game);
+void	exit_won(t_map *game);
 
 #endif

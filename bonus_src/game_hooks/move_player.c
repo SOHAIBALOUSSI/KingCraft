@@ -12,12 +12,6 @@
 
 #include "../so_long_bonus.h"
 
-void	exit_won(t_map *game)
-{
-	ft_printf("%sYou won! The princess is free.%s\n", GREEN, CLEAR);
-	exit_game(game);
-}
-
 static	void	move_player_up(t_map *game, int x, int y)
 {
 	if (game->map_lines[y - 1][x] != '1')
@@ -26,7 +20,7 @@ static	void	move_player_up(t_map *game, int x, int y)
 			game->collected++;
 		else if (game->map_lines[y - 1][x] == 'E')
 		{
-			if (game->collected != game->c_count)
+			if (game->collected != game->c_count || game->death_flag)
 				return ;
 			else
 				exit_won(game);
@@ -52,7 +46,7 @@ static	void	move_player_down(t_map *game, int x, int y)
 			game->collected++;
 		else if (game->map_lines[y + 1][x] == 'E')
 		{
-			if (game->collected != game->c_count)
+			if (game->collected != game->c_count || game->death_flag)
 				return ;
 			else
 				exit_won(game);
@@ -79,7 +73,7 @@ static	void	move_player_right(t_map *game, int x, int y)
 			game->collected++;
 		else if (game->map_lines[y][x + 1] == 'E')
 		{
-			if (game->collected != game->c_count)
+			if (game->collected != game->c_count || game->death_flag)
 				return ;
 			else
 				exit_won(game);
@@ -106,7 +100,7 @@ static	void	move_player_left(t_map *game, int x, int y)
 			game->collected++;
 		else if (game->map_lines[y][x - 1] == 'E')
 		{
-			if (game->collected != game->c_count)
+			if (game->collected != game->c_count || game->death_flag)
 				return ;
 			else
 				exit_won(game);

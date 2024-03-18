@@ -61,7 +61,7 @@ static	void	push_exit_image(t_map *game, int x, int y)
 static	void	check_element_and_push(t_map *game, int x, int y, char element)
 {
 	if (element == '0')
-		push_image(game, game->bg, x, y); 
+		push_image(game, game->bg, x, y);
 	else if (element == '1')
 		push_image(game, game->wall, x, y);
 	else if (element == 'C')

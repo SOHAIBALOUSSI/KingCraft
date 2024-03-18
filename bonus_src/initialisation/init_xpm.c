@@ -31,12 +31,9 @@ static	void	king_xpm(t_map *game)
 	game->king_right[0] = create_image(game, "./assets/king-right.xpm");
 	game->king_right[1] = create_image(game, "./assets/king-idle-right.xpm");
 	game->king_right[2] = create_image(game, "./assets/king-heart-right.xpm");
-	
 	game->king_left[0] = create_image(game, "./assets/king-left.xpm");
 	game->king_left[1] = create_image(game, "./assets/king-idle-left.xpm");
 	game->king_left[2] = create_image(game, "./assets/king-heart-left.xpm");
-	
-
 	game->king_death[0] = create_image(game, "./assets/death-0.xpm");
 	game->king_death[1] = create_image(game, "./assets/death-1.xpm");
 	game->king_death[2] = create_image(game, "./assets/death-2.xpm");
@@ -45,27 +42,28 @@ static	void	king_xpm(t_map *game)
 
 static	void	princess_exit_xpm(t_map *game)
 {
-
 	game->exit_left[0] = create_image(game, "./assets/EXIT-LEFT-0.xpm");
 	game->exit_left[1] = create_image(game, "./assets/EXIT-LEFT-1.xpm");
 	game->exit_left[2] = create_image(game, "./assets/EXIT-LEFT-2.xpm");
 	game->exit_left[3] = create_image(game, "./assets/EXIT-LEFT-3.xpm");
-	game->exit_idle_left[0] = create_image(game, "./assets/princess-left.xpm");
-	game->exit_idle_left[1] = create_image(game, "./assets/princess-idle-left.xpm");
-
+	game->exit_idle_left[0] = create_image(game,
+			"./assets/princess-left.xpm");
+	game->exit_idle_left[1] = create_image(game,
+			"./assets/princess-idle-left.xpm");
 	game->exit_right[0] = create_image(game, "./assets/EXIT-RIGHT-0.xpm");
 	game->exit_right[1] = create_image(game, "./assets/EXIT-RIGHT-1.xpm");
 	game->exit_right[2] = create_image(game, "./assets/EXIT-RIGHT-2.xpm");
 	game->exit_right[3] = create_image(game, "./assets/EXIT-RIGHT-3.xpm");
-	game->exit_idle_right[0] = create_image(game, "./assets/princess-right.xpm");
-	game->exit_idle_right[1] = create_image(game, "./assets/princess-idle-right.xpm");
-
+	game->exit_idle_right[0] = create_image(game,
+			"./assets/princess-right.xpm");
+	game->exit_idle_right[1] = create_image(game,
+			"./assets/princess-idle-right.xpm");
 }
+
 void	init_xpm(t_map *game)
 {
 	king_xpm(game);
 	princess_exit_xpm(game);
-
 	game->enemy[0] = create_image(game, "./assets/enemy-left.xpm");
 	game->enemy[1] = create_image(game, "./assets/enemy-right.xpm");
 	game->bg = create_image(game, "./assets/bg.xpm");

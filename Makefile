@@ -41,7 +41,7 @@ OBJS = $(SRCS:.c=.o)
 
 BSRCS = ./bonus_src/bonus_main.c $(LIBFT_SRC) $(addprefix ./bonus_src/map_validity/, check_fonctions.c errors.c validate_map.c check_valid_path.c errors_helper.c)\
 		$(addprefix ./bonus_src/initialisation/, init_mlx.c init_xpm.c init_map.c) \
-		$(addprefix ./bonus_src/game_hooks/, capture_hook.c move_player.c patroling_enemy.c) 
+		$(addprefix ./bonus_src/game_hooks/, capture_hook.c move_player.c patroling_enemy.c exit_status.c ) 
 BOBJS = $(BSRCS:.c=.o)
 
 all :$(MLX) $(NAME) 

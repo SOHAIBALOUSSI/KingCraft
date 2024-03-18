@@ -1,14 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   patroling_enemy.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sait-alo <sait-alo@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/17 18:07:56 by sait-alo          #+#    #+#             */
+/*   Updated: 2024/03/17 18:07:59 by sait-alo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../so_long_bonus.h"
 
-#include <time.h>
-
-
-static int	can_move(t_map *game, int x, int y)
+static	int	can_move(t_map *game, int x, int y)
 {
-	return (game->map_lines[y][x] == '0'|| game->map_lines[y][x] == 'P');
+	return (game->map_lines[y][x] == '0' || game->map_lines[y][x] == 'P');
 }
 
-static void	move_left(t_map *game, int *x, int y)
+static	void	move_left(t_map *game, int *x, int y)
 {
 	if (game->map_lines[y][(*x) - 1] == 'P')
 	{

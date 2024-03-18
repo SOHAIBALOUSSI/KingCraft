@@ -16,7 +16,7 @@
 void	can_reach_exit(char **map, int x, int y, t_map *map_data)
 {
 	if (x < 0 || y < 0 || x >= map_data->width
-		|| y >= map_data->height || map[y][x] == '1' )
+		|| y >= map_data->height || map[y][x] == '1' || map[y][x] == 'W')
 		return ;
 	if (map[y][x] == 'E')
 	{

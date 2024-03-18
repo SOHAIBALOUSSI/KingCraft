@@ -9,9 +9,7 @@
 /*   Updated: 2024/03/13 15:44:52 by sait-alo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../so_long.h"
-
 
 static	void	move_player_up(t_map *game, int x, int y)
 {

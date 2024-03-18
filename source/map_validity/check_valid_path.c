@@ -32,6 +32,8 @@ void	can_reach_exit(char **map, int x, int y, t_map *map_data)
 	can_reach_exit(map, x, y - 1, map_data);
 }
 
+/* Checks whether the player can win the game 
+	by reaching all collectibles and the exit.*/
 int	check_valid_path(char **all_lines, t_map *game)
 {
 	int	i;
@@ -39,7 +41,7 @@ int	check_valid_path(char **all_lines, t_map *game)
 	i = -1;
 	game->map__ = (char **)malloc(sizeof(char *) * (game->height + 1));
 	if (!game->map__)
-		return (0);
+		return (-1);
 	while (game->map_lines[++i])
 		game->map__[i] = ft_strdup(game->map_lines[i]);
 	game->map__[i] = NULL;

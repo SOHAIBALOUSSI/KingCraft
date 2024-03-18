@@ -44,7 +44,7 @@ static	void	push_exit_image(t_map *game, int x, int y)
 {
 	if (game->player_x <= x)
 	{
-		if (game->c_count == game->collected)
+		if ((game->c_count == game->collected) && !game->death_flag)
 		{
 			push_image(game, game->exit_left[game->exit_frame], x, y);
 			push_image(game, game->exit_idle_left[game->princess_frame], x, y);
@@ -54,7 +54,7 @@ static	void	push_exit_image(t_map *game, int x, int y)
 	}
 	else
 	{
-		if (game->c_count == game->collected)
+		if ((game->c_count == game->collected) && !game->death_flag)
 		{
 			push_image(game, game->exit_right[game->exit_frame], x, y);
 			push_image(game, game->exit_idle_right[game->princess_frame], x, y);
@@ -91,9 +91,9 @@ static	void	check_element_and_push(t_map *game, int x, int y, char element)
 
 void	init_map(t_map *game)
 {
-	int	x;
-	int	y;
-
+	int		x;
+	int		y;
+	
 	y = 0;
 	while (game->map_lines[y])
 	{
@@ -105,8 +105,10 @@ void	init_map(t_map *game)
 		}
 		y++;
 	}
+	game->moves = ft_itoa(game->player_moves);
 	mlx_string_put(game->ptr, game->win, 30,
 		(game->height * 60) - 30, 0xF0B207, "King Moves :");
 	mlx_string_put(game->ptr, game->win, 120,
-		(game->height * 60) - 29, 0xF0B207, ft_itoa(game->player_moves));
+		(game->height * 60) - 29, 0xF0B207, game->moves);
+	free(game->moves);
 }

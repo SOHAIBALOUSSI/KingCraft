@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit_status.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sait-alo <sait-alo@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/17 18:04:34 by sait-alo          #+#    #+#             */
+/*   Updated: 2024/03/17 18:04:44 by sait-alo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../so_long.h"
 
 static	void	destroy_xpm(t_map *game)
@@ -8,7 +20,7 @@ static	void	destroy_xpm(t_map *game)
 	while (++i < 4)
 	{
 		mlx_destroy_image(game->ptr, game->king[i]->xpm_data);
-		mlx_destroy_image(game->ptr, game->princess_exit[i++]->xpm_data);
+		mlx_destroy_image(game->ptr, game->princess_exit[i]->xpm_data);
 	}
 	mlx_destroy_image(game->ptr, game->bg->xpm_data);
 	mlx_destroy_image(game->ptr, game->wall->xpm_data);

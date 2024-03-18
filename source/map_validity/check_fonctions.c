@@ -12,6 +12,7 @@
 
 #include "../so_long.h"
 
+/* Function to check if the given *map_path has '.ber' extention*/
 int	extension_check(char *map_path)
 {
 	char	*extention;
@@ -28,6 +29,7 @@ int	extension_check(char *map_path)
 	return (0);
 }
 
+/* Main Fuction that reads the map, check for errors while reading */
 char	*read_map(int fd, t_map *map)
 {
 	char	*current_line;
@@ -37,17 +39,14 @@ char	*read_map(int fd, t_map *map)
 	full_line = NULL;
 	current_line = get_next_line(fd);
 	if (!current_line)
-		return (NULL);
+		error("Invalid map : Empty map!");
 	map->width = ft_strlen_read(current_line);
 	if (map->width > (map->display_width / 60))
 		error_read("Can't Open, Too big width", full_line, current_line);
 	while (current_line)
 	{
 		tmp = full_line;
-		if (ft_strlen(current_line) == 0 || !ft_strncmp(current_line, "\n", 1))
-			error_read("Invalid map: Empty line detected", tmp, current_line);
-		else if (ft_strlen_read(current_line) != map->width)
-			error_read("Invalid map: Map not rectangular!", tmp, current_line);
+		read_errors_check(map, current_line, tmp);
 		map->height++;
 		if (map->height > map->display_height / 60)
 			error_read("Can't Open, Too big map height", tmp, current_line);
@@ -90,6 +89,7 @@ int	component_check(char **map_lines, t_map *map)
 	return (0);
 }
 
+/* Function to check if the map Surounded with Walls */
 int	wall_check(char **map_lines, t_map *map)
 {
 	int	x;

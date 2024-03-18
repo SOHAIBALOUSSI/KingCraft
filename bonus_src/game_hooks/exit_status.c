@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mlx.c                                         :+:      :+:    :+:   */
+/*   exit_status.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sait-alo <sait-alo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/07 21:17:48 by sait-alo          #+#    #+#             */
-/*   Updated: 2024/03/07 21:17:50 by sait-alo         ###   ########.fr       */
+/*   Created: 2024/03/17 18:48:35 by sait-alo          #+#    #+#             */
+/*   Updated: 2024/03/17 18:48:37 by sait-alo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
-#include "../../libs/libft/libft.h"
+#include "../so_long_bonus.h"
 
-int	init_mlx(t_map *mlx)
+void	exit_won(t_map *game)
 {
-	mlx->ptr = mlx_init();
-	if (!mlx->ptr)
-		return (1);
-	mlx->win = mlx_new_window(mlx->ptr,
-			mlx->width * 60, mlx->height * 60, "Batman");
-	if (!mlx->win)
-		return (free(mlx->ptr), 1);
-	return (1);
+	ft_printf("%sYou won! The princess is free.%s\n", GREEN, CLEAR);
+	exit_game(game);
 }

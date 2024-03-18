@@ -20,7 +20,7 @@ static char	*read_line(int fd, char *content, char *buffer)
 	readed = 1;
 	while (readed > 0 && !(gnl_strchr(content, '\n')))
 	{
-		readed = read(fd, buffer, BUFFER_SIZE);
+		readed = read(fd, buffer, 1);
 		if (readed < 0)
 		{
 			free(buffer);
@@ -67,8 +67,8 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	line = NULL;
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	buffer = malloc((2) * sizeof(char));
+	if (fd < 0)
 	{
 		free(buffer);
 		buffer = NULL;

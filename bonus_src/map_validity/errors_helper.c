@@ -42,3 +42,11 @@ int	not_valid_component(char c, t_map *map)
 	return (c != 'E' && c != 'P' && c != 'C'
 		&& c != '1' && c != '0' && c != 'W');
 }
+
+void	read_errors_check(t_map *map, char *current_line, char *tmp)
+{
+	if (!ft_strncmp(current_line, "\n", 1))
+		error_read("Invalid map: Empty line detected", tmp, current_line);
+	else if (ft_strlen_read(current_line) != map->width)
+		error_read("Invalid map: Map not rectangular!", tmp, current_line);
+}
